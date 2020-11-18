@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Scripts.Coord;
 
 namespace Scripts.Piece
 {
     public class Piece : MonoBehaviour
     {
-        //manage the Piece gameObject and texture
-        //public int[2] coords;
-        // Start is called before the first frame update
+
         void Start()
         {
 
