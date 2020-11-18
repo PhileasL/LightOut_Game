@@ -13,7 +13,7 @@ namespace Scripts.Coord
         public float x, y;
 
         /// <summary>
-        /// Cartesian is a custructor of a cartesian system coordinate
+        /// Cartesian is a constructor of a cartesian system coordinate
         /// </summary>
         /// <param name="xPos"></param>
         /// <param name="yPos"></param>

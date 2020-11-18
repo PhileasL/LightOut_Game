@@ -17,6 +17,7 @@ namespace Scripts.Board.Plane
 
         /// <summary>
         /// coords is an instance of Cartesian
+        /// represents the coordinates of this relative to the world
         /// </summary>
         public Cartesian coords;
 
@@ -29,6 +30,8 @@ namespace Scripts.Board.Plane
         // Start is called before the first frame update
         void Start()
         {
+            coords = new Cartesian(size * 5, size * 5);
+            this.transform.position = new Vector3(coords.Coord(0), 0, coords.Coord(1));
             ShowPlane();
             SetParameters();
         }
@@ -43,12 +46,13 @@ namespace Scripts.Board.Plane
         }
 
         /// <summary>
-        /// SetParameters sets scale of plane and it's position relative to the world
+        /// SetParameters sets scale of plane and it's position relative to this
         /// </summary>
         private void SetParameters()
         {
+            planeObject.transform.parent = GameObject.Find("LightOut/Board").transform;
             planeObject.transform.localScale = new Vector3(size, 1, size);
-            coords = new Cartesian(size * 5, size * 5);
+
             planeObject.transform.position = new Vector3(coords.Coord(0), 0, coords.Coord(1));
         }
 
