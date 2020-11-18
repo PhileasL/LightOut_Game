@@ -8,9 +8,12 @@ namespace Scripts.Piece
     public class Piece : MonoBehaviour
     {
 
+        public GameObject pieceObject;
+
         void Start()
         {
-
+            GameObject piecePrefab = (GameObject)Resources.Load("Prefabs/Piece");
+            pieceObject = (GameObject)Instantiate(piecePrefab);
         }
 
         // Update is called once per frame
