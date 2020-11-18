@@ -1,16 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Scripts.Board.Plane;
+using Scripts.Rules;
 
 namespace Scripts.Board
 {
     public class Board
     {
-        public int size;
+        public Plane.Plane plane;
+        protected int size = Rules.Rules.size;
 
-        public Board(int s)
+        public Board(GameObject parent)
         {
-            this.size = s;
+            GameObject boardObject = new GameObject("Board");
+            boardObject.transform.parent = parent.transform;
+            plane = boardObject.AddComponent<Plane.Plane>();
         }
     }
 }
