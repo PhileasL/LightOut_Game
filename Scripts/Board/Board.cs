@@ -11,10 +11,10 @@ namespace Scripts.Board
         public Plane.Plane plane;
         protected int size = Rules.Rules.size;
 
-        public Board(GameObject parent)
+        public Board()
         {
-            GameObject boardObject = new GameObject("Board");
-            boardObject.transform.parent = parent.transform;
+            GameObject boardObject = new GameObject("Board"); 
+            boardObject.transform.parent = GameObject.Find("LightOut").transform;
             plane = boardObject.AddComponent<Plane.Plane>();
         }
     }
