@@ -5,7 +5,6 @@ using Scripts.Board.Plane;
 using Scripts.Rules;
 using Scripts.Piece;
 using Scripts.Coord;
-using System;
 
 namespace Scripts.Board
 {
@@ -15,9 +14,6 @@ namespace Scripts.Board
         /// plane is an instance of Plane, representing the board under the pieces
         /// </summary>
         public Plane.Plane plane;
-
-
-        public Dictionary<Cartesian, Piece.Piece> pieces = new Dictionary<Cartesian, Piece.Piece>();
 
         /// <summary>
         /// size represents the number of piece on one line of the board
@@ -47,7 +43,8 @@ namespace Scripts.Board
                     GameObject pieceObject = new GameObject("Piece_" + i.ToString() + "_" + j.ToString());
                     pieceObject.transform.parent = GameObject.Find("LightOut/Board").transform;
                     Piece.Piece piece = pieceObject.AddComponent<Piece.Piece>();
-                } 
+                    piece.CreatePieceAt(new Cartesian(i, j));
+                }
             }
         }
     }
