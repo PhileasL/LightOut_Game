@@ -5,6 +5,7 @@ using Scripts.Board.Plane;
 using Scripts.Rules;
 using Scripts.Piece;
 using Scripts.Coord;
+using System;
 
 namespace Scripts.Board
 {
@@ -41,9 +42,12 @@ namespace Scripts.Board
         {
             for (int i = 1; i <= size; i++)
             {
-                GameObject pieceObject = new GameObject("Piece");
-                //pieceObject.transform.parent = GameObject.Find("LightOut/Board/Plane(Clone)").transform;
-                //plane = boardObject.AddComponent<Plane.Plane>();
+                for (int j = 1; j <= size; j++)
+                {
+                    GameObject pieceObject = new GameObject("Piece_" + i.ToString() + "_" + j.ToString());
+                    pieceObject.transform.parent = GameObject.Find("LightOut/Board").transform;
+                    Piece.Piece piece = pieceObject.AddComponent<Piece.Piece>();
+                } 
             }
         }
     }

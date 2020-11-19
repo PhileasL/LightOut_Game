@@ -1,6 +1,14 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Scripts",
+    "\\Scripts\\Board",
+    "\\Scripts\\Board\\Plane",
+    "\\Scripts\\Coord",
+    "\\Scripts\\Piece",
+    "\\Scripts\\Piece\\State",
+    "\\Scripts\\Rules"
   ],
+  "SelectedNode": "\\Scripts\\Rules\\Rules.cs",
   "PreviewInSolutionExplorer": false
 }
