@@ -7,6 +7,8 @@ namespace Scripts.Rules
     public class Rules
     {
         public static int size = 5;
+
+        public static int neighbour = 1;
     }
 }
 

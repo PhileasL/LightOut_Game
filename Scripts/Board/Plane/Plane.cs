@@ -27,10 +27,15 @@ namespace Scripts.Board.Plane
         /// </summary>
         protected float size = (float)Rules.Rules.size / 10;
 
+        /// <summary>
+        /// center of the plane object
+        /// </summary>
+        protected float center = (float)Rules.Rules.size / 2;
+
         // Start is called before the first frame update
         void Start()
         {
-            coords = new Cartesian(size * 5, size * 5);
+            coords = new Cartesian((float)-0.5, (float)-0.5);
             this.transform.position = new Vector3(coords.Coord(0), 0, coords.Coord(1));
             ShowPlane();
             SetParameters();
@@ -53,7 +58,7 @@ namespace Scripts.Board.Plane
             planeObject.transform.parent = GameObject.Find("LightOut/Board").transform;
             planeObject.transform.localScale = new Vector3(size, 1, size);
 
-            planeObject.transform.position = new Vector3(coords.Coord(0), 0, coords.Coord(1));
+            planeObject.transform.position = new Vector3((float)(center), 0, (float)(center));
         }
 
         // Update is called once per frame

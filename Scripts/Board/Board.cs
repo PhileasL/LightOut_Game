@@ -5,6 +5,7 @@ using Scripts.Board.Plane;
 using Scripts.Rules;
 using Scripts.Piece;
 using Scripts.Coord;
+using System;
 
 namespace Scripts.Board
 {
@@ -20,13 +21,25 @@ namespace Scripts.Board
         /// </summary>
         protected int size = Rules.Rules.size;
 
+        /// <summary>
+        /// List of Piece contains all the pieces of the game
+        /// </summary>
+        public List<Piece.Piece> pieces = new List<Piece.Piece>();
 
+        /// <summary>
+        /// Constructor of the Board
+        /// </summary>
         public Board()
         {
             CreatePlane();
             CreatePieces();
         }
 
+        /// <summary>
+        /// CreatePlane create the Board object
+        /// puts LightOut to its parent
+        /// and create the plane object
+        /// </summary>
         private void CreatePlane()
         {
             GameObject boardObject = new GameObject("Board");
@@ -34,6 +47,9 @@ namespace Scripts.Board
             plane = boardObject.AddComponent<Plane.Plane>();
         }
 
+        /// <summary>
+        /// CreatePieces creates all the pieces at right coordinates
+        /// </summary>
         private void CreatePieces()
         {
             for (int i = 1; i <= size; i++)
@@ -44,6 +60,7 @@ namespace Scripts.Board
                     pieceObject.transform.parent = GameObject.Find("LightOut/Board").transform;
                     Piece.Piece piece = pieceObject.AddComponent<Piece.Piece>();
                     piece.CreatePieceAt(new Cartesian(i, j));
+                    pieces.Add(piece);
                 }
             }
         }

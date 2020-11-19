@@ -34,6 +34,16 @@ namespace Scripts.Coord
             else if (c == 1) { return y; }
             else { return -1; }
         }
+
+        public string String()
+        {
+            return "x: " + x.ToString() + " y: " + y.ToString();
+        }
+
+        public bool Equals(Cartesian other)
+        {
+            return (other.x == x && other.y == y);
+        }
     }
 }
 
