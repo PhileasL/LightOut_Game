@@ -48,6 +48,9 @@ namespace Scripts.Board.Plane
         {
             GameObject planePrefab = (GameObject)Resources.Load("Prefabs/Plane");
             planeObject = (GameObject)Instantiate(planePrefab);
+            Material newMaterialRef = (Material)Resources.Load("Textures/Plane");
+            Renderer m_ObjectRenderer = planeObject.GetComponent<Renderer>();
+            m_ObjectRenderer.material = newMaterialRef;
         }
 
         /// <summary>

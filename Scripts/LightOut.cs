@@ -25,9 +25,12 @@ namespace Scripts
                 // Casts the ray and get the first game object hit
                 Physics.Raycast(ray, out hit);
                 if (hit.point.x != 0.0 && hit.point.z != 0.0){
-                    Debug.Log("This hit at " + hit.point);
-                    Vector3 tmp = new Vector3((int)hit.point.x + 1, 0, (int)hit.point.z + 1);
-                    Debug.Log("coord " + tmp);
+                    Cartesian coordHits = new Cartesian((int)hit.point.x + 1, (int)hit.point.z + 1);
+                    Debug.Log(coordHits.String());
+                    foreach (Piece.Piece piece in board.pieces)
+                    {
+                        if (piece.coord.Equals(coordHits)) { Debug.Log(piece.name); }
+                    }
                 }
             }
         }
