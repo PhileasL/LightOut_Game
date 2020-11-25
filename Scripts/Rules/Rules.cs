@@ -10,6 +10,22 @@ namespace Scripts.Rules
 
         public static int neighbour = 1;
 
+        private List<Piece.Piece> goal;
+
+        public Rules(List<Piece.Piece> pieces)
+        {
+            this.goal = pieces;
+            ComputeAGoal();
+        }
+
+        private void ComputeAGoal()
+        {
+            System.Random rnd = new System.Random();
+            for (int i = 0; i < goal.Count; i++)
+            {
+                goal[i].ApplyNewMaterial(UnityParams.stateToMaterial[rnd.Next(0, 2)]);
+            }
+        }
     }
 
     public static class UnityParams

@@ -18,6 +18,7 @@ namespace Scripts
             board = new Board.Board(false);
             goalBoard = new Board.Board(true);
             lastCoordHits = new Cartesian(0, 0);
+            Rules.Rules test = new Rules.Rules(goalBoard.pieces);
         }
 
         // Update is called once per frame
