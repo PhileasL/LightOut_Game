@@ -73,7 +73,7 @@ namespace Scripts.Board.Plane
             SetParameters();
             if (isGoal)
             {
-                coords = new Cartesian(0, (float)(Rules.Rules.size));
+                coords = new Cartesian(0, (float)(Rules.Rules.size + Rules.UnityParams.spaceBetweenBoards));
                 this.transform.position = new Vector3(coords.Coord(0), 0, coords.Coord(1));
             }
             else

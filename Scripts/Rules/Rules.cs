@@ -44,6 +44,8 @@ namespace Scripts.Rules
 
         public static string gameName = "LightOut";
 
+        public static int spaceBetweenBoards = 1;
+
         public static int onState = 1;
 
         public static int offState = 0;

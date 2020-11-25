@@ -43,6 +43,13 @@ namespace Scripts.Piece
             rend.material = mat;
         }
 
+        public void ChangeState()
+        {
+            if (state == 1) { state = 0; }
+            else { state = 1; }
+            ApplyNewMaterial(Rules.UnityParams.stateToMaterial[state]);
+        }
+
         /// <summary>
         /// CreatePieceAt create a piece at given coord
         /// it puts its parent to the name of the piece
@@ -56,7 +63,7 @@ namespace Scripts.Piece
 
             this.coord = coord;
             pieceObject.transform.position = new Vector3((float)(coord.Coord(0)-0.5), 0, (float)(coord.Coord(1)-0.5));
-            if (isGoal) { pieceObject.transform.position += new Vector3(0, 0, Rules.Rules.size); }
+            if (isGoal) { pieceObject.transform.position += new Vector3(0, 0, Rules.Rules.size + Rules.UnityParams.spaceBetweenBoards); }
         }
     }
 }
