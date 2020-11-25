@@ -9,6 +9,7 @@ namespace Scripts.Rules
         public static int size = 5;
 
         public static int neighbour = 1;
+
     }
 
     public static class UnityParams

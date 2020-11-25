@@ -20,9 +20,14 @@ namespace Scripts.Piece
         /// </summary>
         public Cartesian coord;
 
+        /// <summary>
+        /// State of a Piece
+        /// </summary>
+        public int state;
+
         void Start()
         {
-
+            this.state = Rules.UnityParams.offState;
         }
 
         // Update is called once per frame
