@@ -9,13 +9,14 @@ namespace Scripts
 {
     public class LightOut : MonoBehaviour
     {
-        private Board.Board board;
+        private Board.Board board, goalBoard;
 
         private Cartesian lastCoordHits;
         // Start is called before the first frame update
         void Start()
         {
-            board = new Board.Board();
+            board = new Board.Board(false);
+            goalBoard = new Board.Board(true);
             lastCoordHits = new Cartesian(0, 0);
         }
 

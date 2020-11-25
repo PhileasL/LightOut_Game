@@ -25,7 +25,7 @@ namespace Scripts.Board.Plane
         /// <summary>
         /// size of the plane, 0.1 is one piece
         /// </summary>
-        protected float size = (float)Rules.Rules.size / 10;
+        protected float scale = (float)Rules.Rules.size / 10;
 
         /// <summary>
         /// center of the plane object
@@ -35,10 +35,7 @@ namespace Scripts.Board.Plane
         // Start is called before the first frame update
         void Start()
         {
-            coords = new Cartesian((float)-0.5, (float)-0.5);
-            this.transform.position = new Vector3(coords.Coord(0), 0, coords.Coord(1));
-            ShowPlane();
-            SetParameters();
+            
         }
 
         /// <summary>
@@ -59,16 +56,31 @@ namespace Scripts.Board.Plane
         /// </summary>
         private void SetParameters()
         {
-            planeObject.transform.parent = GameObject.Find(Rules.UnityParams.boardHierarchy).transform;
-            planeObject.transform.localScale = new Vector3(size, 1, size);
-
-            planeObject.transform.position = new Vector3((float)(center), 0, (float)(center));
+            planeObject.transform.parent = this.transform;
+            planeObject.transform.localScale = new Vector3(scale, 1, scale);
+            planeObject.transform.position = new Vector3((float)(center), 0, (float)(center));           
         }
 
         // Update is called once per frame
         void Update()
         {
 
+        }
+
+        public void SetPosition(bool isGoal)
+        {
+            ShowPlane();
+            SetParameters();
+            if (isGoal)
+            {
+                coords = new Cartesian(0, (float)(Rules.Rules.size));
+                this.transform.position = new Vector3(coords.Coord(0), 0, coords.Coord(1));
+            }
+            else
+            {
+                coords = new Cartesian(0,0);
+                this.transform.position = new Vector3(coords.Coord(0), 0, coords.Coord(1));
+            }
         }
     }
 }

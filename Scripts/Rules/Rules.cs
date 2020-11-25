@@ -28,23 +28,40 @@ namespace Scripts.Rules
 
         public static string gameName = "LightOut";
 
-        public static string boardName = "Board";
-
-        public static string pieceName = "Piece";
-
-        public static string boardHierarchy = gameName + "/" + boardName;
-
         public static int onState = 1;
 
         public static int offState = 0;
-
-        public static string CreatePieceName(int x, int y)
-        {
-            return pieceName + "_" + x.ToString() + "_" + y.ToString();
-        }
-
+        
         public static Dictionary<int, string> stateToMaterial = new Dictionary<int, string>(){{onState, onMaterialPath},
                                                                                               {offState, offMaterialPath}};
+    
+        public readonly ref struct game
+        {
+            public static string boardName = "GameBoard";
+
+            public static string pieceName = "GamePiece";
+
+            public static string boardHierarchy = gameName + "/" + boardName;
+
+            public static string CreatePieceName(int x, int y)
+            {
+                return pieceName + "_" + x.ToString() + "_" + y.ToString();
+            }
+        }
+
+        public readonly ref struct goal
+        {
+            public static string boardName = "GoalBoard";
+
+            public static string pieceName = "GoalPiece";
+
+            public static string boardHierarchy = gameName + "/" + boardName;
+
+            public static string CreatePieceName(int x, int y)
+            {
+                return pieceName + "_" + x.ToString() + "_" + y.ToString();
+            }
+        }
     }
 }
 
