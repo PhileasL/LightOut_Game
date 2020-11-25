@@ -46,9 +46,10 @@ namespace Scripts.Board.Plane
         /// </summary>
         private void ShowPlane()
         {
-            GameObject planePrefab = (GameObject)Resources.Load(Rules.unityParams.planeObjectPath);
+            GameObject planePrefab = (GameObject)Resources.Load(Rules.UnityParams.planeObjectPath);
             planeObject = (GameObject)Instantiate(planePrefab);
-            Material mat = (Material)Resources.Load(Rules.unityParams.planeMaterialPath);
+
+            Material mat = (Material)Resources.Load(Rules.UnityParams.planeMaterialPath);
             Renderer rend = planeObject.GetComponent<Renderer>();
             rend.material = mat;
         }
@@ -58,7 +59,7 @@ namespace Scripts.Board.Plane
         /// </summary>
         private void SetParameters()
         {
-            planeObject.transform.parent = GameObject.Find(Rules.unityParams.boardHierarchy).transform;
+            planeObject.transform.parent = GameObject.Find(Rules.UnityParams.boardHierarchy).transform;
             planeObject.transform.localScale = new Vector3(size, 1, size);
 
             planeObject.transform.position = new Vector3((float)(center), 0, (float)(center));

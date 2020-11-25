@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Scripts.Board;
 using Scripts.Coord;
+using Scripts.Rules;
 
 namespace Scripts
 {
@@ -29,7 +30,10 @@ namespace Scripts
                     Debug.Log(coordHits.String());
                     foreach (Piece.Piece piece in board.pieces)
                     {
-                        if (piece.coord.Equals(coordHits)) { Debug.Log(piece.name); }
+                        if (piece.coord.Equals(coordHits)) { 
+                            Debug.Log(piece.name);
+                            piece.ApplyNewMaterial(Rules.UnityParams.onMaterialPath);
+                        }
                     }
                 }
             }

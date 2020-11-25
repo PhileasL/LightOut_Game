@@ -31,9 +31,11 @@ namespace Scripts.Piece
             
         }
 
-        public void ApplyNewMaterial(string pathToMaterial)
+        public void ApplyNewMaterial(string materialPath)
         {
-
+            Material mat = (Material)Resources.Load(materialPath);
+            Renderer rend = pieceObject.GetComponent<Renderer>();
+            rend.material = mat;
         }
 
         /// <summary>
@@ -43,7 +45,7 @@ namespace Scripts.Piece
         /// <param name="coord"></param>
         public void CreatePieceAt(Cartesian coord)
         {
-            GameObject piecePrefab = (GameObject)Resources.Load(Rules.unityParams.pieceObjectPath);
+            GameObject piecePrefab = (GameObject)Resources.Load(Rules.UnityParams.pieceObjectPath);
             pieceObject = (GameObject)Instantiate(piecePrefab);
             pieceObject.transform.parent = this.transform;
 

@@ -42,8 +42,8 @@ namespace Scripts.Board
         /// </summary>
         private void CreatePlane()
         {
-            GameObject boardObject = new GameObject(Rules.unityParams.boardName);
-            boardObject.transform.parent = GameObject.Find(Rules.unityParams.gameName).transform;
+            GameObject boardObject = new GameObject(Rules.UnityParams.boardName);
+            boardObject.transform.parent = GameObject.Find(Rules.UnityParams.gameName).transform;
             plane = boardObject.AddComponent<Plane.Plane>();
         }
 
@@ -56,8 +56,8 @@ namespace Scripts.Board
             {
                 for (int j = 1; j <= size; j++)
                 {
-                    GameObject pieceObject = new GameObject(Rules.unityParams.CreatePieceName(i,j));
-                    pieceObject.transform.parent = GameObject.Find(Rules.unityParams.boardHierarchy).transform;
+                    GameObject pieceObject = new GameObject(Rules.UnityParams.CreatePieceName(i,j));
+                    pieceObject.transform.parent = GameObject.Find(Rules.UnityParams.boardHierarchy).transform;
                     Piece.Piece piece = pieceObject.AddComponent<Piece.Piece>();
                     piece.CreatePieceAt(new Cartesian(i, j));
                     pieces.Add(piece);

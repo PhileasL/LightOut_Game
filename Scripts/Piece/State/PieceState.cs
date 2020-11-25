@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Scripts.Coord;
+using Scripts.Rules;
 
 namespace Scripts.Piece.State
 {
@@ -14,20 +14,13 @@ namespace Scripts.Piece.State
 
 
         /// <summary>
-        /// Cartesian coordinates of the piece
-        /// </summary>
-        public Cartesian coord;
-
-
-        /// <summary>
         /// Constructor initialise an instance with a int state s and Cartesian coord
         /// </summary>
         /// <param name="s"></param>
         /// <param name="c"></param>
-        public PieceState(int state, Cartesian coord)
+        public PieceState()
         {
-            this.state = state;
-            this.coord = coord;
+            this.state = Rules.UnityParams.offState;
         }
 
     }
