@@ -42,15 +42,15 @@ namespace Scripts.Board.Plane
         }
 
         /// <summary>
-        /// ShowPlane show the plane on the scene
+        /// ShowPlane show the plane on the scene and assign it a texture
         /// </summary>
         private void ShowPlane()
         {
-            GameObject planePrefab = (GameObject)Resources.Load("Prefabs/Plane");
+            GameObject planePrefab = (GameObject)Resources.Load(Rules.unityParams.planeObjectPath);
             planeObject = (GameObject)Instantiate(planePrefab);
-            Material newMaterialRef = (Material)Resources.Load("Textures/Plane");
-            Renderer m_ObjectRenderer = planeObject.GetComponent<Renderer>();
-            m_ObjectRenderer.material = newMaterialRef;
+            Material mat = (Material)Resources.Load(Rules.unityParams.planeMaterialPath);
+            Renderer rend = planeObject.GetComponent<Renderer>();
+            rend.material = mat;
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Scripts.Board.Plane
         /// </summary>
         private void SetParameters()
         {
-            planeObject.transform.parent = GameObject.Find("LightOut/Board").transform;
+            planeObject.transform.parent = GameObject.Find(Rules.unityParams.boardHierarchy).transform;
             planeObject.transform.localScale = new Vector3(size, 1, size);
 
             planeObject.transform.position = new Vector3((float)(center), 0, (float)(center));

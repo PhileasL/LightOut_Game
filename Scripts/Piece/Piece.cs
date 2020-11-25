@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Scripts.Coord;
 using System.Globalization;
+using Scripts.Rules;
 
 namespace Scripts.Piece
 {
@@ -29,6 +30,12 @@ namespace Scripts.Piece
         {
             
         }
+
+        public void ApplyNewMaterial(string pathToMaterial)
+        {
+
+        }
+
         /// <summary>
         /// CreatePieceAt create a piece at given coord
         /// it puts its parent to the name of the piece
@@ -36,7 +43,7 @@ namespace Scripts.Piece
         /// <param name="coord"></param>
         public void CreatePieceAt(Cartesian coord)
         {
-            GameObject piecePrefab = (GameObject)Resources.Load("Prefabs/Piece");
+            GameObject piecePrefab = (GameObject)Resources.Load(Rules.unityParams.pieceObjectPath);
             pieceObject = (GameObject)Instantiate(piecePrefab);
             pieceObject.transform.parent = this.transform;
 
