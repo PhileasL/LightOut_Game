@@ -8,13 +8,18 @@ namespace Scripts.Rules
     {
         public static int size = 5;
 
-        public static int neighbour = 0;
+        public static int neighbour = 3;
+
+        public static int difficulty = 1;
 
         private List<Piece.Piece> goal;
 
-        public Rules(List<Piece.Piece> pieces)
+        private List<Piece.Piece> board;
+
+        public Rules(List<Piece.Piece> goal, List<Piece.Piece> board)
         {
-            this.goal = pieces;
+            this.goal = goal;
+            this.board = board;
             ComputeAGoal();
         }
 
@@ -23,7 +28,13 @@ namespace Scripts.Rules
             System.Random rnd = new System.Random();
             for (int i = 0; i < goal.Count; i++)
             {
-                goal[i].ApplyNewMaterial(UnityParams.stateToMaterial[rnd.Next(0, 2)]);
+                int state = rnd.Next(0, 2);
+
+                goal[i].ApplyNewMaterial(UnityParams.stateToMaterial[state]);
+                goal[i].state = state;
+
+                board[i].ApplyNewMaterial(UnityParams.stateToMaterial[state]);
+                board[i].state = state;
             }
         }
     }

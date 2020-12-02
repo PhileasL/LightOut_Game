@@ -40,9 +40,22 @@ namespace Scripts.Coord
             return "x: " + x.ToString() + " y: " + y.ToString();
         }
 
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            Cartesian objAsPart = obj as Cartesian;
+            if (objAsPart == null) return false;
+            else return Equals(objAsPart);
+        }
+
         public bool Equals(Cartesian other)
         {
             return (other.x == x && other.y == y);
+        }
+
+        public override int GetHashCode()
+        {
+            return (int)(x + Rules.Rules.size*y);
         }
 
         public static float DistanceBetween2Coords(Cartesian coord1, Cartesian coord2)

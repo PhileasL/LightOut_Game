@@ -8,6 +8,6 @@
     "\\Scripts\\Piece",
     "\\Scripts\\Rules"
   ],
-  "SelectedNode": "\\Scripts\\LightOut.cs",
+  "SelectedNode": "\\Scripts\\Coord\\Cartesian.cs",
   "PreviewInSolutionExplorer": false
 }
