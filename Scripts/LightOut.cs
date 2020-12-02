@@ -36,6 +36,12 @@ namespace Scripts
                 }
             }
         }
+        /*
+        private List<Cartesian> GetNeighbourCoords(Piece.Piece piece)
+        {
+            List<Cartesian> neighbour = new List<Cartesian>();
+
+        }*/
 
         private Cartesian GetCoordHits()
         {
