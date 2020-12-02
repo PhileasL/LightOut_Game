@@ -36,6 +36,13 @@ namespace Scripts.Piece
             
         }
 
+        public void ApplyHighlight(bool highlight)
+        {
+            Renderer rend = pieceObject.GetComponent<Renderer>();
+            if (highlight) rend.material.EnableKeyword("_EMISSION");
+            else rend.material.DisableKeyword("_EMISSION");
+        }
+
         public void ApplyNewMaterial(string materialPath)
         {
             Material mat = (Material)Resources.Load(materialPath);

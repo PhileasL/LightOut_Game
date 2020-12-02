@@ -12,12 +12,14 @@ namespace Scripts
         private Board.Board board, goalBoard;
 
         private Cartesian lastCoordHits;
+
+        private Cartesian lastCoordAbove;
         // Start is called before the first frame update
         void Start()
         {
             board = new Board.Board(false);
             goalBoard = new Board.Board(true);
-            lastCoordHits = new Cartesian(0, 0);
+            lastCoordHits = lastCoordAbove = new Cartesian(0, 0);
             Rules.Rules test = new Rules.Rules(goalBoard.pieces, board.pieces);
 
         }
@@ -25,9 +27,10 @@ namespace Scripts
         // Update is called once per frame
         void Update()
         {
+            Cartesian coordHits = GetCoordHits();
+            
             if (Input.GetMouseButton(0))
             {
-                Cartesian coordHits = GetCoordHits();
                 if (coordHits != null && !coordHits.Equals(lastCoordHits))
                 {
                     lastCoordHits = coordHits;
@@ -37,17 +40,37 @@ namespace Scripts
                     ChangeNeighourStates(coordsNeighours);
                 }
             }
+
+            if (coordHits != null && !coordHits.Equals(lastCoordAbove))
+            {
+                lastCoordAbove = coordHits;
+                //Debug.Log(lastCoordAbove.String());
+                Piece.Piece pieceAbove = GetPieceHits(coordHits);
+                List<Cartesian> coordsNeighours = GetNeighbourCoords(pieceAbove.coord);
+                ChangeNeighourHighlight(coordsNeighours);
+            }
+
         }
-        
+
         private void ChangeNeighourStates(List<Cartesian> coords)
         {
             foreach (Piece.Piece piece in board.pieces)
             {
                 if (coords.Contains(piece.coord))
                 {
-                    Debug.Log("yes: " + coords.Count.ToString());
+                    //Debug.Log("yes: " + coords.Count.ToString());
                     piece.ChangeState();
                 }
+            }
+        }
+
+
+        private void ChangeNeighourHighlight(List<Cartesian> coords)
+        {
+            foreach (Piece.Piece piece in board.pieces)
+            {
+                if (coords.Contains(piece.coord)) piece.ApplyHighlight(true);
+                else piece.ApplyHighlight(false);
             }
         }
 
