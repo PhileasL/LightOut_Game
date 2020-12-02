@@ -27,7 +27,7 @@ namespace Scripts.Piece
 
         void Start()
         {
-            this.state = Rules.UnityParams.offState;
+            //this.state = Rules.UnityParams.offState;
         }
 
         // Update is called once per frame

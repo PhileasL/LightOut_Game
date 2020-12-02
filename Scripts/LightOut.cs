@@ -21,7 +21,7 @@ namespace Scripts
             goalBoard = new Board.Board(true);
             lastCoordHits = lastCoordAbove = new Cartesian(0, 0);
             Rules.Rules test = new Rules.Rules(goalBoard.pieces, board.pieces);
-
+            board.pieces = test.board;
         }
 
         // Update is called once per frame
@@ -34,6 +34,7 @@ namespace Scripts
                 if (coordHits != null && !coordHits.Equals(lastCoordHits))
                 {
                     lastCoordHits = coordHits;
+                    lastCoordAbove = new Cartesian(0, 0);
                     Debug.Log(coordHits.String());
                     Piece.Piece pieceHits = GetPieceHits(coordHits);
                     List<Cartesian> coordsNeighours = GetNeighbourCoords(pieceHits.coord);
@@ -43,8 +44,8 @@ namespace Scripts
 
             if (coordHits != null && !coordHits.Equals(lastCoordAbove))
             {
+                Debug.Log(coordHits.String());
                 lastCoordAbove = coordHits;
-                //Debug.Log(lastCoordAbove.String());
                 Piece.Piece pieceAbove = GetPieceHits(coordHits);
                 List<Cartesian> coordsNeighours = GetNeighbourCoords(pieceAbove.coord);
                 ChangeNeighourHighlight(coordsNeighours);
@@ -103,7 +104,7 @@ namespace Scripts
             RaycastHit hit;
             // Casts the ray and get the first game object hit
             Physics.Raycast(ray, out hit);
-            if (hit.point.x != 0.0 && hit.point.z != 0.0)
+            if (hit.point.x != 0.0 && hit.point.z != 0.0 && hit.point.z <= Rules.Rules.size && hit.point.x <= Rules.Rules.size)
             {
                 return new Cartesian((int)hit.point.x + 1, (int)hit.point.z + 1);
             }

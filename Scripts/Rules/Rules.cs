@@ -8,13 +8,13 @@ namespace Scripts.Rules
     {
         public static int size = 5;
 
-        public static int neighbour = 3;
+        public static int neighbour = 1;
 
         public static int difficulty = 1;
 
         private List<Piece.Piece> goal;
 
-        private List<Piece.Piece> board;
+        public List<Piece.Piece> board;
 
         public Rules(List<Piece.Piece> goal, List<Piece.Piece> board)
         {
