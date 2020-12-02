@@ -32,28 +32,40 @@ namespace Scripts
                     lastCoordHits = coordHits;
                     Debug.Log(coordHits.String());
                     Piece.Piece pieceHits = GetPieceHits(coordHits);
-                    pieceHits.ChangeState();
-                    GetNeighbourCoords(pieceHits.coord);
+                    List<Cartesian> coordsNeighours = GetNeighbourCoords(pieceHits.coord);
+                    ChangeNeighourStates(coordsNeighours);
                 }
             }
         }
         
+        private void ChangeNeighourStates(List<Cartesian> coords)
+        {
+            foreach (Piece.Piece piece in board.pieces)
+            {
+                if (coords.Contains(piece.coord))
+                {
+                    Debug.Log("yes: " + coords.Count.ToString());
+                    piece.ChangeState();
+                }
+            }
+        }
+
         private List<Cartesian> GetNeighbourCoords(Cartesian coords)
         {
             List<Cartesian> neighbour = new List<Cartesian>();
-            neighbour.Add(coords);
             float distFromHit;
             if (Rules.Rules.neighbour % 2 != 0) distFromHit = Rules.Rules.neighbour/2+1;
             else distFromHit = (Rules.Rules.neighbour/2 + 1) * (float)System.Math.Sqrt(2);
-            Debug.Log("distFromHit: " + distFromHit.ToString());
+            //Debug.Log("distFromHit: " + distFromHit.ToString());
             for (int i = (int)(coords.Coord(0) - (Rules.Rules.neighbour +1)/2); i <= (int)(coords.Coord(0) + (Rules.Rules.neighbour + 1) / 2); i++)
             {
                 for (int j = (int)(coords.Coord(1) - (Rules.Rules.neighbour + 1) / 2); j <= (int)(coords.Coord(1) + (Rules.Rules.neighbour + 1) / 2); j++)
                 {
-                    if (Cartesian.DistanceBetween2Coords(coords, new Cartesian(i,j)) <= distFromHit)
+                    Cartesian tmp = new Cartesian((float)i, (float)j);
+                    if (Cartesian.DistanceBetween2Coords(coords, tmp) <= distFromHit)
                     {
-                        Debug.Log("x: " + i.ToString() + " y: " + j.ToString() + " dist: " + Cartesian.DistanceBetween2Coords(coords, new Cartesian(i, j)).ToString());
-                        neighbour.Add(new Cartesian((float)i, (float)j));
+                        //Debug.Log("x: " + i.ToString() + " y: " + j.ToString() + " dist: " + Cartesian.DistanceBetween2Coords(coords, new Cartesian(i, j)).ToString());
+                        neighbour.Add(tmp);
                     }
                 }
             }
@@ -81,7 +93,6 @@ namespace Scripts
                 if (piece.coord.Equals(coord))
                 {
                     Debug.Log(piece.name);
-                    piece.ApplyNewMaterial(Rules.UnityParams.onMaterialPath);
                     return piece;
                 }
             }
