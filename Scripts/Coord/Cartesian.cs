@@ -44,6 +44,12 @@ namespace Scripts.Coord
         {
             return (other.x == x && other.y == y);
         }
+
+        public static float DistanceBetween2Coords(Cartesian coord1, Cartesian coord2)
+        {
+            return (float)System.Math.Sqrt((coord2.Coord(0) - coord1.Coord(0)) * (coord2.Coord(0) - coord1.Coord(0))
+                + (coord2.Coord(1) - coord1.Coord(1)) * (coord2.Coord(1) - coord1.Coord(1)));
+        }
     }
 }
 

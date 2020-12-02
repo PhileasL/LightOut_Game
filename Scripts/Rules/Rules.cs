@@ -8,7 +8,7 @@ namespace Scripts.Rules
     {
         public static int size = 5;
 
-        public static int neighbour = 3;
+        public static int neighbour = 0;
 
         private List<Piece.Piece> goal;
 

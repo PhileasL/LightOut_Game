@@ -33,15 +33,33 @@ namespace Scripts
                     Debug.Log(coordHits.String());
                     Piece.Piece pieceHits = GetPieceHits(coordHits);
                     pieceHits.ChangeState();
+                    GetNeighbourCoords(pieceHits.coord);
                 }
             }
         }
-        /*
-        private List<Cartesian> GetNeighbourCoords(Piece.Piece piece)
+        
+        private List<Cartesian> GetNeighbourCoords(Cartesian coords)
         {
             List<Cartesian> neighbour = new List<Cartesian>();
+            neighbour.Add(coords);
+            float distFromHit;
+            if (Rules.Rules.neighbour % 2 != 0) distFromHit = Rules.Rules.neighbour/2+1;
+            else distFromHit = (Rules.Rules.neighbour/2 + 1) * (float)System.Math.Sqrt(2);
+            Debug.Log("distFromHit: " + distFromHit.ToString());
+            for (int i = (int)(coords.Coord(0) - (Rules.Rules.neighbour +1)/2); i <= (int)(coords.Coord(0) + (Rules.Rules.neighbour + 1) / 2); i++)
+            {
+                for (int j = (int)(coords.Coord(1) - (Rules.Rules.neighbour + 1) / 2); j <= (int)(coords.Coord(1) + (Rules.Rules.neighbour + 1) / 2); j++)
+                {
+                    if (Cartesian.DistanceBetween2Coords(coords, new Cartesian(i,j)) <= distFromHit)
+                    {
+                        Debug.Log("x: " + i.ToString() + " y: " + j.ToString() + " dist: " + Cartesian.DistanceBetween2Coords(coords, new Cartesian(i, j)).ToString());
+                        neighbour.Add(new Cartesian((float)i, (float)j));
+                    }
+                }
+            }
+            return neighbour;
 
-        }*/
+        }
 
         private Cartesian GetCoordHits()
         {
