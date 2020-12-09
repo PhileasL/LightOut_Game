@@ -14,6 +14,9 @@ namespace Scripts
         private Cartesian lastCoordHits;
 
         private Cartesian lastCoordAbove;
+
+        private bool aboveVoid = false;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -34,6 +37,7 @@ namespace Scripts
             {
                 if (coordHits != null && !coordHits.Equals(lastCoordHits))
                 {
+                    aboveVoid = false;
                     lastCoordHits = coordHits;
                     lastCoordAbove = new Cartesian(0, 0);
                     Debug.Log(coordHits.String());
@@ -45,11 +49,18 @@ namespace Scripts
 
             if (coordHits != null && !coordHits.Equals(lastCoordAbove))
             {
+                aboveVoid = false;
                 Debug.Log(coordHits.String());
                 lastCoordAbove = coordHits;
                 Piece.Piece pieceAbove = GetPieceHits(coordHits);
                 List<Cartesian> coordsNeighours = GetNeighbourCoords(pieceAbove.coord);
                 ChangeNeighourHighlight(coordsNeighours);
+            }
+
+            if (coordHits == null && !aboveVoid)
+            {
+                aboveVoid = true;
+                ChangeNeighourHighlight(new List<Cartesian>() { new Cartesian(0, 0) });
             }
 
         }
