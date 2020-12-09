@@ -6,7 +6,7 @@ using Scripts.Rules;
 using Scripts.Piece;
 using Scripts.Coord;
 using System;
-//InstanciedOnce.Parameters.LightDetected ? "La lumière a été détectée aujourdhui." : "La lumière n'a  pas encore été détectée aujourdhui."
+
 namespace Scripts.Board
 {
     public class Board
