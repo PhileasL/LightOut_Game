@@ -17,14 +17,16 @@ namespace Scripts
 
         private bool aboveVoid = false;
 
+        protected Rules.Rules rules;
+
         // Start is called before the first frame update
         void Start()
         {
             board = new Board.Board(false);
             goalBoard = new Board.Board(true);
             lastCoordHits = lastCoordAbove = new Cartesian(0, 0);
-            Rules.Rules test = new Rules.Rules(goalBoard.pieces, board.pieces);
-            board.pieces = test.board;
+            rules = new Rules.Rules(goalBoard.pieces, board.pieces);
+            board.pieces = rules.board;
             setupTheGame();
         }
 
@@ -44,6 +46,7 @@ namespace Scripts
                     Piece.Piece pieceHits = GetPieceHits(coordHits);
                     List<Cartesian> coordsNeighours = GetNeighbourCoords(pieceHits.coord);
                     ChangeNeighourStates(coordsNeighours);
+                    if (rules.checkForEndGame(board.pieces)) Debug.Log("END!!!");
                 }
             }
 

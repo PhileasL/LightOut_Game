@@ -37,6 +37,15 @@ namespace Scripts.Rules
                 board[i].state = state;
             }
         }
+
+        public bool checkForEndGame(List<Piece.Piece> gameState)
+        {
+            for (int i = 0; i<gameState.Count; i++)
+            {
+                if (!gameState[i].Equals(goal[i])) return false;
+            }
+            return true;
+        }
     }
 
     public static class UnityParams

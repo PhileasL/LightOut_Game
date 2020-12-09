@@ -72,6 +72,11 @@ namespace Scripts.Piece
             pieceObject.transform.position = new Vector3((float)(coord.Coord(0)-0.5), 0, (float)(coord.Coord(1)-0.5));
             if (isGoal) { pieceObject.transform.position += new Vector3(0, 0, Rules.Rules.size + Rules.UnityParams.spaceBetweenBoards); }
         }
+
+        public bool Equals(Piece other)
+        {
+            return (other.state == state && other.coord.Equals(coord));
+        }
     }
 }
 
