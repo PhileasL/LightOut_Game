@@ -33,12 +33,12 @@ namespace Scripts.Actions
         {
             List<Cartesian> neighbour = new List<Cartesian>();
             float distFromHit;
-            if (Rules.Rules.neighbour % 2 != 0) distFromHit = Rules.Rules.neighbour / 2 + 1;
-            else distFromHit = (Rules.Rules.neighbour / 2 + 1) * (float)System.Math.Sqrt(2);
+            if (rules.neighbour % 2 != 0) distFromHit = rules.neighbour / 2 + 1;
+            else distFromHit = (rules.neighbour / 2 + 1) * (float)System.Math.Sqrt(2);
             //Debug.Log("distFromHit: " + distFromHit.ToString());
-            for (int i = (int)(coords.Coord(0) - (Rules.Rules.neighbour + 1) / 2); i <= (int)(coords.Coord(0) + (Rules.Rules.neighbour + 1) / 2); i++)
+            for (int i = (int)(coords.Coord(0) - (rules.neighbour + 1) / 2); i <= (int)(coords.Coord(0) + (rules.neighbour + 1) / 2); i++)
             {
-                for (int j = (int)(coords.Coord(1) - (Rules.Rules.neighbour + 1) / 2); j <= (int)(coords.Coord(1) + (Rules.Rules.neighbour + 1) / 2); j++)
+                for (int j = (int)(coords.Coord(1) - (rules.neighbour + 1) / 2); j <= (int)(coords.Coord(1) + (rules.neighbour + 1) / 2); j++)
                 {
                     Cartesian tmp = new Cartesian((float)i, (float)j);
                     if (Cartesian.DistanceBetween2Coords(coords, tmp) <= distFromHit)

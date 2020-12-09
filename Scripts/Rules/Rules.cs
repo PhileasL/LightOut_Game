@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Scripts.Coord;
+using Scripts.Board;
 
 namespace Scripts.Rules
 {
     public class Rules
     {
-        public static int size = 5;
+        public int size = 5;
 
-        public static int neighbour = 2;
+        public int neighbour = 2;
 
-        public static int difficulty = 1;
+        public int difficulty = 1;
 
         private List<Piece.Piece> goal;
 
@@ -19,10 +20,12 @@ namespace Scripts.Rules
 
         public Actions.Actions actions;
 
-        public Rules(List<Piece.Piece> goal, List<Piece.Piece> board)
+        public List<Cartesian> solution;
+
+        public Rules()
         {
-            this.goal = goal;
-            this.board = board;
+            this.goal = (new Board.Board(true, size)).pieces;
+            this.board = (new Board.Board(false, size)).pieces;
             actions = new Actions.Actions(this);
             ComputeAGoal();
             ScrambleBoard();
@@ -45,17 +48,17 @@ namespace Scripts.Rules
 
         private void ScrambleBoard()
         {
-            List<Cartesian> alreadyDone = new List<Cartesian>();
+            solution = new List<Cartesian>();
             System.Random rnd = new System.Random();
             for (int i = 0; i < difficulty; i++)
             {
                 Cartesian randomStep = new Cartesian(rnd.Next(1, size + 1), rnd.Next(1, size + 1));
-                while (alreadyDone.Contains(randomStep))
+                while (solution.Contains(randomStep))
                 {
                     Debug.Log("doublons " + randomStep.String());
                     randomStep = new Cartesian(rnd.Next(1, size + 1), rnd.Next(1, size + 1));
                 }
-                alreadyDone.Add(randomStep);
+                solution.Add(randomStep);
                 Debug.Log(randomStep.String());
                 board = actions.ChangeNeighourStates(actions.GetNeighbourCoords(randomStep), board);
             }

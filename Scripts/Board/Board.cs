@@ -19,7 +19,7 @@ namespace Scripts.Board
         /// <summary>
         /// size represents the number of piece on one line of the board
         /// </summary>
-        protected int size = Rules.Rules.size;
+        protected int size;
 
         /// <summary>
         /// List of Pieces contain all the pieces of the game
@@ -31,9 +31,10 @@ namespace Scripts.Board
         /// <summary>
         /// Constructor of the Board
         /// </summary>
-        public Board(bool isGoal)
+        public Board(bool isGoal, int size)
         {
             this.isGoal = isGoal;
+            this.size = size;
             CreatePlanes();
             CreatePieces();
         }
@@ -48,7 +49,7 @@ namespace Scripts.Board
             GameObject boardObject = new GameObject(isGoal ? Rules.UnityParams.goal.boardName : Rules.UnityParams.game.boardName);
             boardObject.transform.parent = GameObject.Find(Rules.UnityParams.gameName).transform;
             plane = boardObject.AddComponent<Plane.Plane>();
-            plane.SetPosition(isGoal);
+            plane.SetPosition(isGoal, size);
         }
 
         /// <summary>
@@ -65,7 +66,7 @@ namespace Scripts.Board
                     pieceObject.transform.parent = GameObject.Find(isGoal ? Rules.UnityParams.goal.boardHierarchy 
                         : Rules.UnityParams.game.boardHierarchy).transform;
                     Piece.Piece piece = pieceObject.AddComponent<Piece.Piece>();
-                    piece.CreatePieceAt(new Cartesian(i, j), isGoal);
+                    piece.CreatePieceAt(new Cartesian(i, j), isGoal, size);
                     pieces.Add(piece);
                 }
             }

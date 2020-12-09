@@ -9,7 +9,7 @@ namespace Scripts
 {
     public class LightOut : MonoBehaviour
     {
-        private Board.Board board, goalBoard;
+        private List<Piece.Piece> board;
 
         private Cartesian lastCoordHits;
 
@@ -17,19 +17,17 @@ namespace Scripts
 
         private bool aboveVoid = false;
 
-        protected Rules.Rules rules;
+        private protected Rules.Rules rules;
 
-        protected Actions.Actions actions;
+        private protected Actions.Actions actions;
 
         // Start is called before the first frame update
         void Start()
         {
-            board = new Board.Board(false);
-            goalBoard = new Board.Board(true);
             lastCoordHits = lastCoordAbove = new Cartesian(0, 0);
-            rules = new Rules.Rules(goalBoard.pieces, board.pieces);
-            board.pieces = rules.board;
-            actions = new Actions.Actions(rules);
+            rules = new Rules.Rules();
+            board = rules.board;
+            actions = rules.actions;
         }
 
         // Update is called once per frame
@@ -45,10 +43,10 @@ namespace Scripts
                     lastCoordHits = coordHits;
                     lastCoordAbove = new Cartesian(0, 0);
                     Debug.Log(coordHits.String());
-                    Piece.Piece pieceHits = actions.GetPieceHits(coordHits, board.pieces);
+                    Piece.Piece pieceHits = actions.GetPieceHits(coordHits, board);
                     List<Cartesian> coordsNeighours = actions.GetNeighbourCoords(pieceHits.coord);
-                    board.pieces = actions.ChangeNeighourStates(coordsNeighours, board.pieces);
-                    if (rules.checkForEndGame(board.pieces)) Debug.Log("END!!!");
+                    board = actions.ChangeNeighourStates(coordsNeighours, board);
+                    if (rules.checkForEndGame(board)) Debug.Log("END!!!");
                 }
             }
 
@@ -57,15 +55,15 @@ namespace Scripts
                 aboveVoid = false;
                 Debug.Log(coordHits.String());
                 lastCoordAbove = coordHits;
-                Piece.Piece pieceAbove = actions.GetPieceHits(coordHits, board.pieces);
+                Piece.Piece pieceAbove = actions.GetPieceHits(coordHits, board);
                 List<Cartesian> coordsNeighours = actions.GetNeighbourCoords(pieceAbove.coord);
-                actions.ChangeNeighourHighlight(coordsNeighours, board.pieces);
+                actions.ChangeNeighourHighlight(coordsNeighours, board);
             }
 
             if (coordHits == null && !aboveVoid)
             {
                 aboveVoid = true;
-                actions.ChangeNeighourHighlight(new List<Cartesian>() { new Cartesian(0, 0) }, board.pieces);
+                actions.ChangeNeighourHighlight(new List<Cartesian>() { new Cartesian(0, 0) }, board);
             }
 
         }
@@ -76,7 +74,7 @@ namespace Scripts
             RaycastHit hit;
             // Casts the ray and get the first game object hit
             Physics.Raycast(ray, out hit);
-            if (hit.point.x != 0.0 && hit.point.z != 0.0 && hit.point.z <= Rules.Rules.size && hit.point.x <= Rules.Rules.size)
+            if (hit.point.x != 0.0 && hit.point.z != 0.0 && hit.point.z <= rules.size && hit.point.x <= rules.size)
             {
                 return new Cartesian((int)hit.point.x + 1, (int)hit.point.z + 1);
             }

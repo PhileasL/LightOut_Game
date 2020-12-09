@@ -25,12 +25,12 @@ namespace Scripts.Board.Plane
         /// <summary>
         /// size of the plane, 0.1 is one piece
         /// </summary>
-        protected float scale = (float)Rules.Rules.size / 10;
+        private float scale;
 
         /// <summary>
         /// center of the plane object
         /// </summary>
-        protected float center = (float)Rules.Rules.size / 2;
+        private float center;
 
         // Start is called before the first frame update
         void Start()
@@ -54,8 +54,11 @@ namespace Scripts.Board.Plane
         /// <summary>
         /// SetParameters sets scale of plane and it's position relative to this
         /// </summary>
-        private void SetParameters()
+        private void SetParameters(int size)
         {
+            scale = (float)size / 10;
+            center = (float)size / 2;
+
             planeObject.transform.parent = this.transform;
             planeObject.transform.localScale = new Vector3(scale, 1, scale);
             planeObject.transform.position = new Vector3((float)(center), 0, (float)(center));           
@@ -67,13 +70,13 @@ namespace Scripts.Board.Plane
 
         }
 
-        public void SetPosition(bool isGoal)
+        public void SetPosition(bool isGoal, int size)
         {
             ShowPlane();
-            SetParameters();
+            SetParameters(size);
             if (isGoal)
             {
-                coords = new Cartesian(0, (float)(Rules.Rules.size + Rules.UnityParams.spaceBetweenBoards));
+                coords = new Cartesian(0, (float)(size + Rules.UnityParams.spaceBetweenBoards));
                 this.transform.position = new Vector3(coords.Coord(0), 0, coords.Coord(1));
             }
             else

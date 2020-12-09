@@ -62,7 +62,7 @@ namespace Scripts.Piece
         /// it puts its parent to the name of the piece
         /// </summary>
         /// <param name="coord"></param>
-        public void CreatePieceAt(Cartesian coord, bool isGoal)
+        public void CreatePieceAt(Cartesian coord, bool isGoal, int size)
         {
             GameObject piecePrefab = (GameObject)Resources.Load(Rules.UnityParams.pieceObjectPath);
             pieceObject = (GameObject)Instantiate(piecePrefab);
@@ -70,7 +70,7 @@ namespace Scripts.Piece
 
             this.coord = coord;
             pieceObject.transform.position = new Vector3((float)(coord.Coord(0)-0.5), 0, (float)(coord.Coord(1)-0.5));
-            if (isGoal) { pieceObject.transform.position += new Vector3(0, 0, Rules.Rules.size + Rules.UnityParams.spaceBetweenBoards); }
+            if (isGoal) { pieceObject.transform.position += new Vector3(0, 0, size + Rules.UnityParams.spaceBetweenBoards); }
         }
 
         public bool Equals(Piece other)

@@ -55,7 +55,7 @@ namespace Scripts.Coord
 
         public override int GetHashCode()
         {
-            return (int)(x + Rules.Rules.size*y);
+            return (int)(x + 20*y);
         }
 
         public static float DistanceBetween2Coords(Cartesian coord1, Cartesian coord2)
