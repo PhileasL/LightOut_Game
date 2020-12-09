@@ -63,7 +63,9 @@ namespace Scripts
             if (coordHits == null && !aboveVoid)
             {
                 aboveVoid = true;
-                actions.ChangeNeighourHighlight(new List<Cartesian>() { new Cartesian(0, 0) }, board);
+                Cartesian nullCoord = new Cartesian(0, 0);
+                actions.ChangeNeighourHighlight(new List<Cartesian>() { nullCoord }, board);
+                lastCoordAbove = nullCoord;
             }
 
         }
