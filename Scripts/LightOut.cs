@@ -22,6 +22,7 @@ namespace Scripts
             lastCoordHits = lastCoordAbove = new Cartesian(0, 0);
             Rules.Rules test = new Rules.Rules(goalBoard.pieces, board.pieces);
             board.pieces = test.board;
+            setupTheGame();
         }
 
         // Update is called once per frame
@@ -51,6 +52,24 @@ namespace Scripts
                 ChangeNeighourHighlight(coordsNeighours);
             }
 
+        }
+
+        private void setupTheGame()
+        {
+            List<Cartesian> alreadyDone = new List<Cartesian>();
+            System.Random rnd = new System.Random();
+            for (int i = 0; i < Rules.Rules.difficulty; i++)
+            {
+                Cartesian randomStep = new Cartesian(rnd.Next(1, Rules.Rules.size + 1), rnd.Next(1, Rules.Rules.size + 1));
+                while (alreadyDone.Contains(randomStep))
+                {
+                    Debug.Log("doublons " + randomStep.String());
+                    randomStep = new Cartesian(rnd.Next(1, Rules.Rules.size + 1), rnd.Next(1, Rules.Rules.size + 1));
+                }
+                alreadyDone.Add(randomStep);
+                Debug.Log(randomStep.String());
+                ChangeNeighourStates(GetNeighbourCoords(randomStep));
+            }
         }
 
         private void ChangeNeighourStates(List<Cartesian> coords)
