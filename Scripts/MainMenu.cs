@@ -21,7 +21,7 @@ public class MainMenu : MonoBehaviour
 
     public void Start()
     {
-        UpdatePreview(true);
+        UpdatePreview();
     }
 
     public void QuitGame()
@@ -52,11 +52,16 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    private void UpdatePreview(bool create = false)
+    private void UpdatePreview()
     {
-        if (!create) Destroy(GameObject.Find(UnityParams.game.boardHierarchy));
-        else new GameObject(UnityParams.gameName);
-        preview = new Rules(size, neighbour);
+        Destroy(GameObject.Find(UnityParams.gameName));
+        new GameObject(UnityParams.gameName);
+        StartCoroutine(SpawnBoard());
     }
 
+    IEnumerator SpawnBoard()
+    {
+        yield return new WaitForSeconds(0.01f);
+        preview = new Rules(size, neighbour);
+    }
 }
