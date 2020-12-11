@@ -13,7 +13,7 @@ namespace Scripts.Rules
 
         public int neighbour = PlayerPrefs.GetInt("neighbour");
 
-        public int difficulty = 1;
+        public int difficulty = 2;
 
         public List<Piece.Piece> goal;
 
@@ -30,6 +30,13 @@ namespace Scripts.Rules
             actions = new Actions.Actions(this);
             ComputeAGoal();
             ScrambleBoard();
+        }
+
+        public Rules(int size, int neighbour)
+        {
+            this.size = size;
+            this.neighbour = neighbour;
+            this.board = (new Board.Board(false, size)).pieces;
         }
 
         private void ComputeAGoal()

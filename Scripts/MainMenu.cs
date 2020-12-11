@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
 {
     int size = 6;
     int neighbour = 2;
+    Rules preview;
 
     public void PlayGame()
     {
@@ -16,6 +17,11 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetInt("neighbour", neighbour);
         PlayerPrefs.Save();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void Start()
+    {
+        UpdatePreview(true);
     }
 
     public void QuitGame()
@@ -31,6 +37,7 @@ public class MainMenu : MonoBehaviour
         {
             size = tmpSize;
             Debug.Log(tmpSize);
+            UpdatePreview();
         }
     }
 
@@ -41,6 +48,15 @@ public class MainMenu : MonoBehaviour
         {
             neighbour = tmpNeighbour;
             Debug.Log(tmpNeighbour);
+            UpdatePreview();
         }
     }
+
+    private void UpdatePreview(bool create = false)
+    {
+        if (!create) Destroy(GameObject.Find(UnityParams.game.boardHierarchy));
+        else new GameObject(UnityParams.gameName);
+        preview = new Rules(size, neighbour);
+    }
+
 }
