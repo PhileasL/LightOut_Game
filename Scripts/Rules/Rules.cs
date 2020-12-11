@@ -13,7 +13,7 @@ namespace Scripts.Rules
 
         public int neighbour = PlayerPrefs.GetInt("neighbour");
 
-        public int difficulty = 2;
+        public int difficulty = 1;
 
         public List<Piece.Piece> goal;
 
@@ -37,6 +37,26 @@ namespace Scripts.Rules
             this.size = size;
             this.neighbour = neighbour;
             this.board = (new Board.Board(false, size)).pieces;
+            actions = new Actions.Actions(this);
+            SetPreviewBoard();
+            SetNeighbourPreview();
+        }
+
+        private void SetPreviewBoard()
+        {
+            for (int i = 0; i < board.Count; i++)
+            {
+                board[i].ApplyNewMaterial(UnityParams.stateToMaterial[UnityParams.offState]);
+                board[i].state = UnityParams.offState;
+            }
+        }
+
+        private void SetNeighbourPreview()
+        {
+            int mid = size/2;
+            if (size % 2 != 0) mid++;
+            Cartesian middle = new Cartesian(mid, mid);
+            actions.ChangeNeighourStates(actions.GetNeighbourCoords(middle), board);
         }
 
         private void ComputeAGoal()

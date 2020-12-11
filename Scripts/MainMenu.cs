@@ -63,5 +63,6 @@ public class MainMenu : MonoBehaviour
     {
         yield return new WaitForSeconds(0.01f);
         preview = new Rules(size, neighbour);
+        GameObject.Find("Camera").transform.position = new Vector3((float)(size) / 2, 10, (float)(size) / 2);
     }
 }
