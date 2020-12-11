@@ -10,7 +10,7 @@ namespace Scripts
 {
     public class LightOut : MonoBehaviour
     {
-        private List<Piece.Piece> board;
+        private List<Piece.Piece> board, goal;
 
         private Cartesian lastCoordHits;
 
@@ -28,7 +28,9 @@ namespace Scripts
             lastCoordHits = lastCoordAbove = new Cartesian(0, 0);
             rules = new Rules.Rules();
             board = rules.board;
+            goal = rules.goal;
             actions = rules.actions;
+            SetCamera();
         }
 
         // Update is called once per frame
@@ -63,6 +65,7 @@ namespace Scripts
                 Piece.Piece pieceAbove = actions.GetPieceHits(coordHits, board);
                 List<Cartesian> coordsNeighours = actions.GetNeighbourCoords(pieceAbove.coord);
                 actions.ChangeNeighourHighlight(coordsNeighours, board);
+                actions.ChangeNeighourHighlight(coordsNeighours, goal);
             }
 
             if (coordHits == null && !aboveVoid)
@@ -70,6 +73,7 @@ namespace Scripts
                 aboveVoid = true;
                 Cartesian nullCoord = new Cartesian(0, 0);
                 actions.ChangeNeighourHighlight(new List<Cartesian>() { nullCoord }, board);
+                actions.ChangeNeighourHighlight(new List<Cartesian>() { nullCoord }, goal);
                 lastCoordAbove = nullCoord;
             }
 
@@ -86,6 +90,11 @@ namespace Scripts
                 return new Cartesian((int)hit.point.x + 1, (int)hit.point.z + 1);
             }
             return null;
+        }
+
+        private void SetCamera()
+        {
+            GameObject.Find("Main Camera").transform.position = new Vector3((float)(rules.size)/2, (float)(rules.size /1.3), rules.size+1);
         }
     }
 }

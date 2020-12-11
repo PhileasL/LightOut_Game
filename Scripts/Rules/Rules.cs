@@ -15,7 +15,7 @@ namespace Scripts.Rules
 
         public int difficulty = 1;
 
-        private List<Piece.Piece> goal;
+        public List<Piece.Piece> goal;
 
         public List<Piece.Piece> board;
 
