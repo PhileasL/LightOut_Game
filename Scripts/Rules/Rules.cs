@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Scripts.Coord;
 using Scripts.Board;
+using UnityEngine.SceneManagement;
 
 namespace Scripts.Rules
 {
     public class Rules
     {
-        public int size = 5;
+        public int size = PlayerPrefs.GetInt("size");
 
-        public int neighbour = 2;
+        public int neighbour = PlayerPrefs.GetInt("neighbour");
 
         public int difficulty = 1;
 

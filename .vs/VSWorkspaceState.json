@@ -2,12 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\Scripts",
+    "\\Scripts\\Actions",
     "\\Scripts\\Board",
     "\\Scripts\\Board\\Plane",
     "\\Scripts\\Coord",
     "\\Scripts\\Piece",
     "\\Scripts\\Rules"
   ],
-  "SelectedNode": "\\Scripts\\Coord\\Cartesian.cs",
+  "SelectedNode": "\\Scripts\\MainMenu.cs",
   "PreviewInSolutionExplorer": false
 }

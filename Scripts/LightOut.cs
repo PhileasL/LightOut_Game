@@ -4,6 +4,7 @@ using UnityEngine;
 using Scripts.Board;
 using Scripts.Coord;
 using Scripts.Rules;
+using UnityEngine.SceneManagement;
 
 namespace Scripts
 {
@@ -46,7 +47,11 @@ namespace Scripts
                     Piece.Piece pieceHits = actions.GetPieceHits(coordHits, board);
                     List<Cartesian> coordsNeighours = actions.GetNeighbourCoords(pieceHits.coord);
                     board = actions.ChangeNeighourStates(coordsNeighours, board);
-                    if (rules.checkForEndGame(board)) Debug.Log("END!!!");
+                    if (rules.checkForEndGame(board))
+                    {
+                        Debug.Log("END!!!");
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+                    }
                 }
             }
 
