@@ -5,11 +5,14 @@ using Scripts.Board;
 using Scripts.Coord;
 using Scripts.Rules;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Scripts
 {
     public class LightOut : MonoBehaviour
     {
+        public Text actionRemainingObject;
+
         private List<Piece.Piece> board, goal;
 
         private Cartesian lastCoordHits;
@@ -22,6 +25,8 @@ namespace Scripts
 
         private protected Actions.Actions actions;
 
+        private int actionsRemaining;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -30,6 +35,8 @@ namespace Scripts
             board = rules.board;
             goal = rules.goal;
             actions = rules.actions;
+            actionsRemaining = rules.difficulty;
+            UpdateActionRemainingText();
             SetCamera();
         }
 
@@ -95,6 +102,16 @@ namespace Scripts
         private void SetCamera()
         {
             GameObject.Find("Main Camera").transform.position = new Vector3((float)(rules.size)/2, (float)(rules.size /1.3), rules.size+1);
+        }
+
+        public void ClickButtonClue()
+        {
+
+        }
+
+        private void UpdateActionRemainingText()
+        {
+            actionRemainingObject.text = actionsRemaining.ToString();
         }
     }
 }

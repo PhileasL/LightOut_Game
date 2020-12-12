@@ -87,8 +87,12 @@ namespace Scripts.Rules
                     randomStep = new Cartesian(rnd.Next(1, size + 1), rnd.Next(1, size + 1));
                 }
                 solution.Add(randomStep);
-                Debug.Log(randomStep.String());
                 board = actions.ChangeNeighourStates(actions.GetNeighbourCoords(randomStep), board);
+            }
+            solution.Reverse();
+            foreach (Cartesian coords in solution)
+            {
+                Debug.Log(coords.String());
             }
         }
 
@@ -117,6 +121,12 @@ namespace Scripts.Rules
         public static string offMaterialPath = "Textures/OffMaterial";
 
         public static string gameName = "LightOut";
+
+        public static string ui = gameName + "/UI";
+
+        public static string clueButtonName = ui + "/Clue";
+
+        public static string actionRemainingTextName = ui + "/actionRemaining";
 
         public static int spaceBetweenBoards = 1;
 
