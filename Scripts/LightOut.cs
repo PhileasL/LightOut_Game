@@ -56,6 +56,8 @@ namespace Scripts
                     Piece.Piece pieceHits = actions.GetPieceHits(coordHits, board);
                     List<Cartesian> coordsNeighours = actions.GetNeighbourCoords(pieceHits.coord);
                     board = actions.ChangeNeighourStates(coordsNeighours, board);
+                    actionsRemaining--;
+                    UpdateActionRemainingText();
                     if (rules.checkForEndGame(board))
                     {
                         Debug.Log("END!!!");
@@ -106,7 +108,8 @@ namespace Scripts
 
         public void ClickButtonClue()
         {
-
+            Debug.Log(rules.solution[actionsRemaining - 1].String());
+            actions.ChangeNeighourHighlight(rules.solution, board);
         }
 
         private void UpdateActionRemainingText()
