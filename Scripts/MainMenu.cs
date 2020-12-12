@@ -9,12 +9,14 @@ public class MainMenu : MonoBehaviour
 {
     int size = 6;
     int neighbour = 2;
+    int difficulty = 1;
     Rules preview;
 
     public void PlayGame()
     {
         PlayerPrefs.SetInt("size", size);
         PlayerPrefs.SetInt("neighbour", neighbour);
+        PlayerPrefs.SetInt("difficulty", difficulty);
         PlayerPrefs.Save();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
@@ -39,6 +41,13 @@ public class MainMenu : MonoBehaviour
             Debug.Log(tmpSize);
             UpdatePreview();
         }
+    }
+
+
+    public void SetDifficulty(int dropDown)
+    {
+        difficulty = dropDown + 1;
+        Debug.Log(difficulty);
     }
 
     public void SetNeighbour(float slider)

@@ -13,7 +13,7 @@ namespace Scripts.Rules
 
         public int neighbour = PlayerPrefs.GetInt("neighbour");
 
-        public int difficulty = 1;
+        public int difficulty = PlayerPrefs.GetInt("difficulty");
 
         public List<Piece.Piece> goal;
 
