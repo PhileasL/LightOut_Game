@@ -25,7 +25,7 @@ namespace Scripts
 
         private protected Actions.Actions actions;
 
-        private int actionsRemaining;
+        public int actionsRemaining;
 
         private List<Cartesian> solutionRemaining;
 
