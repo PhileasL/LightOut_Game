@@ -5,16 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject lightOutGame;
-
-    public GameObject pauseMenu;
+    public GameObject lightOutGame, pauseMenu, congratText, failText, pauseText;
 
     public static bool isPaused = false;
+
+    public static bool finished = false;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !finished)
         {
             if (isPaused)
             {
@@ -35,8 +35,13 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
+        congratText.SetActive(false);
+        failText.SetActive(false);
+        pauseText.SetActive(true);
+
         pauseMenu.SetActive(true);
         lightOutGame.SetActive(false);
+
         isPaused = true;
     }
 
@@ -45,7 +50,6 @@ public class PauseMenu : MonoBehaviour
         Debug.Log("quit pressed");
         Application.Quit();
     }
-
 
     public void GoToMenu()
     {

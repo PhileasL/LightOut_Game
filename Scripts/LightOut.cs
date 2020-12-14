@@ -25,23 +25,41 @@ namespace Scripts
 
         private protected Actions.Actions actions;
 
-        public int actionsRemaining;
+        private int actionsRemaining;
 
-        private List<Cartesian> solutionRemaining;
+        private List<Cartesian> solutionRemaining, hitsDone;
 
         // Start is called before the first frame update
         void Start()
         {
             lastCoordHits = lastCoordAbove = new Cartesian(0, 0);
             rules = new Rules.Rules();
+            actions = rules.actions;
+            InitGameSession();
+        }
+
+        public void InitGameSession(bool retry = false)
+        {
             board = rules.board;
             goal = rules.goal;
-            actions = rules.actions;
             actionsRemaining = rules.difficulty;
             solutionRemaining = rules.solution;
             UpdateActionRemainingText();
             SetCamera();
             StartCoroutine(ShowClue());
+            if (retry)
+            {
+                foreach (Cartesian hit in hitsDone)
+                {
+                    List<Cartesian> coordsNeighours = actions.GetNeighbourCoords(hit);
+                    board = actions.ChangeNeighourStates(coordsNeighours, board);
+                }
+                hitsDone.Clear();
+            } 
+            else
+            {
+                hitsDone = new List<Cartesian>();
+            }
         }
 
         // Update is called once per frame
@@ -72,6 +90,7 @@ namespace Scripts
                         Debug.Log("in solution");
                         solutionRemaining.Remove(coordHits);
                     }
+                    hitsDone.Add(coordHits);
                 }
             }
 

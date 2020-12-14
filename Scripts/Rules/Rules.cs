@@ -15,9 +15,7 @@ namespace Scripts.Rules
 
         public int difficulty = PlayerPrefs.GetInt("difficulty");
 
-        public List<Piece.Piece> goal;
-
-        public List<Piece.Piece> board;
+        public List<Piece.Piece> goal, board;
 
         public Actions.Actions actions;
 
