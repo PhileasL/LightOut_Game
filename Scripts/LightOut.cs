@@ -13,6 +13,8 @@ namespace Scripts
     {
         public Text actionRemainingObject;
 
+        public Button clueButton;
+
         private List<Piece.Piece> board, goal;
 
         private Cartesian lastCoordHits, lastCoordAbove;
@@ -39,6 +41,7 @@ namespace Scripts
             solutionRemaining = rules.solution;
             UpdateActionRemainingText();
             SetCamera();
+            StartCoroutine(ShowClue());
         }
 
         // Update is called once per frame
@@ -115,12 +118,20 @@ namespace Scripts
         public void ClickButtonClue()
         {
             //Debug.Log(rules.solution[-1].String());
+            clueButton.gameObject.SetActive(false);
             actions.ChangeNeighourHighlight(new List<Cartesian>() { solutionRemaining[0] }, board);
+            StartCoroutine(ShowClue());
         }
 
         private void UpdateActionRemainingText()
         {
             actionRemainingObject.text = actionsRemaining.ToString();
+        }
+
+        IEnumerator ShowClue()
+        {
+            yield return new WaitForSeconds(Rules.UnityParams.clueApparitionTemporisation);
+            clueButton.gameObject.SetActive(true);
         }
     }
 }

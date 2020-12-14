@@ -128,6 +128,8 @@ namespace Scripts.Rules
         public static int onState = 1;
 
         public static int offState = 0;
+
+        public static float clueApparitionTemporisation = 60.0f;
         
         public static Dictionary<int, string> stateToMaterial = new Dictionary<int, string>(){{onState, onMaterialPath},
                                                                                               {offState, offMaterialPath}};
