@@ -22,7 +22,7 @@ namespace Scripts.Actions
             {
                 if (piece.coord.Equals(coord))
                 {
-                    Debug.Log(piece.name);
+                    //Debug.Log(piece.name);
                     return piece;
                 }
             }

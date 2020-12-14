@@ -15,9 +15,7 @@ namespace Scripts
 
         private List<Piece.Piece> board, goal;
 
-        private Cartesian lastCoordHits;
-
-        private Cartesian lastCoordAbove;
+        private Cartesian lastCoordHits, lastCoordAbove;
 
         private bool aboveVoid = false;
 
@@ -26,6 +24,8 @@ namespace Scripts
         private protected Actions.Actions actions;
 
         private int actionsRemaining;
+
+        private List<Cartesian> solutionRemaining;
 
         // Start is called before the first frame update
         void Start()
@@ -36,6 +36,7 @@ namespace Scripts
             goal = rules.goal;
             actions = rules.actions;
             actionsRemaining = rules.difficulty;
+            solutionRemaining = rules.solution;
             UpdateActionRemainingText();
             SetCamera();
         }
@@ -52,7 +53,7 @@ namespace Scripts
                     aboveVoid = false;
                     lastCoordHits = coordHits;
                     lastCoordAbove = new Cartesian(0, 0);
-                    Debug.Log(coordHits.String());
+                    //Debug.Log(coordHits.String());
                     Piece.Piece pieceHits = actions.GetPieceHits(coordHits, board);
                     List<Cartesian> coordsNeighours = actions.GetNeighbourCoords(pieceHits.coord);
                     board = actions.ChangeNeighourStates(coordsNeighours, board);
@@ -63,13 +64,18 @@ namespace Scripts
                         Debug.Log("END!!!");
                         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
                     }
+                    if (solutionRemaining.Contains(coordHits))
+                    {
+                        Debug.Log("in solution");
+                        solutionRemaining.Remove(coordHits);
+                    }
                 }
             }
 
             if (coordHits != null && !coordHits.Equals(lastCoordAbove))
             {
                 aboveVoid = false;
-                Debug.Log(coordHits.String());
+                //Debug.Log(coordHits.String());
                 lastCoordAbove = coordHits;
                 Piece.Piece pieceAbove = actions.GetPieceHits(coordHits, board);
                 List<Cartesian> coordsNeighours = actions.GetNeighbourCoords(pieceAbove.coord);
@@ -108,8 +114,8 @@ namespace Scripts
 
         public void ClickButtonClue()
         {
-            Debug.Log(rules.solution[actionsRemaining - 1].String());
-            actions.ChangeNeighourHighlight(rules.solution, board);
+            //Debug.Log(rules.solution[-1].String());
+            actions.ChangeNeighourHighlight(new List<Cartesian>() { solutionRemaining[0] }, board);
         }
 
         private void UpdateActionRemainingText()

@@ -89,11 +89,6 @@ namespace Scripts.Rules
                 solution.Add(randomStep);
                 board = actions.ChangeNeighourStates(actions.GetNeighbourCoords(randomStep), board);
             }
-            /*solution.Reverse();
-            foreach (Cartesian coords in solution)
-            {
-                Debug.Log(coords.String());
-            }*/
         }
 
         public bool checkForEndGame(List<Piece.Piece> gameState)

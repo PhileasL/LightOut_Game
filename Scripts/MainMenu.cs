@@ -38,7 +38,6 @@ public class MainMenu : MonoBehaviour
         if (tmpSize != size)
         {
             size = tmpSize;
-            Debug.Log(tmpSize);
             UpdatePreview();
         }
     }
@@ -47,7 +46,6 @@ public class MainMenu : MonoBehaviour
     public void SetDifficulty(int dropDown)
     {
         difficulty = dropDown + 1;
-        Debug.Log(difficulty);
     }
 
     public void SetNeighbour(float slider)
@@ -56,7 +54,6 @@ public class MainMenu : MonoBehaviour
         if (tmpNeighbour != neighbour)
         {
             neighbour = tmpNeighbour;
-            Debug.Log(tmpNeighbour);
             UpdatePreview();
         }
     }
