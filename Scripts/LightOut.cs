@@ -32,6 +32,7 @@ namespace Scripts
         // Start is called before the first frame update
         void Start()
         {
+            PauseMenu.finished = false;
             lastCoordHits = lastCoordAbove = new Cartesian(0, 0);
             rules = new Rules.Rules();
             actions = rules.actions;
@@ -83,7 +84,8 @@ namespace Scripts
                     if (rules.checkForEndGame(board))
                     {
                         Debug.Log("END!!!");
-                        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+                        PauseMenu.finished = true;
+                        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
                     }
                     if (solutionRemaining.Contains(coordHits))
                     {

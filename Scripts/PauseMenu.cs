@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject lightOutGame, pauseMenu, congratText, failText, pauseText;
+    public GameObject lightOutGame, pauseMenu, congratText, failText, 
+        pauseText, retryButton, resumeButton;
 
     public static bool isPaused = false;
 
@@ -24,12 +25,17 @@ public class PauseMenu : MonoBehaviour
                 Pause();
             }
         }
+        if (finished)
+        {
+            Finished();
+        }
     }
 
     public void Resume()
     {
         pauseMenu.SetActive(false);
         lightOutGame.SetActive(true);
+        
         isPaused = false;
     }
 
@@ -54,5 +60,18 @@ public class PauseMenu : MonoBehaviour
     public void GoToMenu()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+
+    public void Finished()
+    {
+        congratText.SetActive(true);
+        failText.SetActive(false);
+        pauseText.SetActive(false);
+
+        retryButton.SetActive(false);
+        resumeButton.SetActive(false);
+
+        pauseMenu.SetActive(true);
+        lightOutGame.SetActive(false);
     }
 }
