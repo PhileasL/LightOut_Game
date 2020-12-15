@@ -12,6 +12,8 @@ public class PauseMenu : MonoBehaviour
 
     public static bool finished = false;
 
+    public static bool failed = false;
+
     // Update is called once per frame
     void Update()
     {
@@ -29,6 +31,10 @@ public class PauseMenu : MonoBehaviour
         {
             Finished();
         }
+        if (failed)
+        {
+            Failed();
+        }
     }
 
     public void Resume()
@@ -44,6 +50,9 @@ public class PauseMenu : MonoBehaviour
         congratText.SetActive(false);
         failText.SetActive(false);
         pauseText.SetActive(true);
+
+        retryButton.SetActive(true);
+        resumeButton.SetActive(true);
 
         pauseMenu.SetActive(true);
         lightOutGame.SetActive(false);
@@ -69,6 +78,19 @@ public class PauseMenu : MonoBehaviour
         pauseText.SetActive(false);
 
         retryButton.SetActive(false);
+        resumeButton.SetActive(false);
+
+        pauseMenu.SetActive(true);
+        lightOutGame.SetActive(false);
+    }
+
+    public void Failed()
+    {
+        congratText.SetActive(false);
+        failText.SetActive(true);
+        pauseText.SetActive(false);
+
+        retryButton.SetActive(true);
         resumeButton.SetActive(false);
 
         pauseMenu.SetActive(true);

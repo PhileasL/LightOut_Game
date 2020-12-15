@@ -50,6 +50,7 @@ namespace Scripts
             StartCoroutine(ShowClue());
             if (retry)
             {
+                PauseMenu.failed = false;
                 foreach (Cartesian hit in hitsDone)
                 {
                     List<Cartesian> coordsNeighours = actions.GetNeighbourCoords(hit);
@@ -81,18 +82,21 @@ namespace Scripts
                     board = actions.ChangeNeighourStates(coordsNeighours, board);
                     actionsRemaining--;
                     UpdateActionRemainingText();
-                    if (rules.checkForEndGame(board))
-                    {
-                        Debug.Log("END!!!");
-                        PauseMenu.finished = true;
-                        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-                    }
                     if (solutionRemaining.Contains(coordHits))
                     {
                         Debug.Log("in solution");
                         solutionRemaining.Remove(coordHits);
                     }
                     hitsDone.Add(coordHits);
+                    if (rules.checkForEndGame(board))
+                    {
+                        Debug.Log("END!!!");
+                        PauseMenu.finished = true;
+                    }
+                    else if (actionsRemaining == 0)
+                    {
+                        PauseMenu.failed = true;
+                    }
                 }
             }
 
