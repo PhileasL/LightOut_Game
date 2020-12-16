@@ -7,10 +7,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OnMaterial
+  m_Name: OffMaterialHighligthed
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
-  m_LightmapFlags: 4
+  m_ShaderKeywords: _EMISSION _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -61,9 +61,9 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.728
+    - _Glossiness: 0.757
     - _GlossyReflections: 1
-    - _Metallic: 0.292
+    - _Metallic: 0.614
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -73,5 +73,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.51197743, g: 0.9150943, b: 0.44459772, a: 1}
-    - _EmissionColor: {r: 0.04503644, g: 0.2830189, b: 0.0040049767, a: 1}
+    - _Color: {r: 0.8773585, g: 0.17584401, b: 0.120016046, a: 1}
+    - _EmissionColor: {r: 0.3301887, g: 0.0513973, b: 0.06424856, a: 1}

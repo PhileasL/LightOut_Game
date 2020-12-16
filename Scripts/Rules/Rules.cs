@@ -113,6 +113,10 @@ namespace Scripts.Rules
 
         public static string offMaterialPath = "Textures/OffMaterial";
 
+        public static string onMaterialHighligthedPath = "Textures/OnMaterialHighlighted";
+
+        public static string offMaterialHighligthedPath = "Textures/OffMaterialHighligthed";
+
         public static string gameName = "LightOut";
 
         public static string ui = gameName + "/UI";
@@ -131,7 +135,10 @@ namespace Scripts.Rules
         
         public static Dictionary<int, string> stateToMaterial = new Dictionary<int, string>(){{onState, onMaterialPath},
                                                                                               {offState, offMaterialPath}};
-    
+
+        public static Dictionary<int, string> stateToHighlightMaterial = new Dictionary<int, string>(){{onState, onMaterialHighligthedPath},
+                                                                                                     {offState, offMaterialHighligthedPath}};
+
         public readonly ref struct game
         {
             public static string boardName = "GameBoard";

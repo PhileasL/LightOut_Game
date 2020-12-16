@@ -33,7 +33,6 @@ namespace Scripts
         void Start()
         {
             PauseMenu.finished = false;
-            lastCoordHits = lastCoordAbove = new Cartesian(0, 0);
             rules = new Rules.Rules();
             actions = rules.actions;
             InitGameSession();
@@ -41,6 +40,7 @@ namespace Scripts
 
         public void InitGameSession(bool retry = false)
         {
+            lastCoordHits = lastCoordAbove = new Cartesian(0, 0);
             board = rules.board;
             goal = rules.goal;
             actionsRemaining = rules.difficulty;
