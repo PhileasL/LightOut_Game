@@ -7,7 +7,7 @@ using Scripts.Rules;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Scripts
+namespace Scripts.Game
 {
     public class LightOut : MonoBehaviour
     {
