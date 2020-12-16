@@ -73,53 +73,68 @@ namespace Scripts
             {
                 if (coordHits != null && !coordHits.Equals(lastCoordHits))
                 {
-                    aboveVoid = false;
-                    lastCoordHits = coordHits;
-                    lastCoordAbove = new Cartesian(0, 0);
-                    //Debug.Log(coordHits.String());
-                    Piece.Piece pieceHits = actions.GetPieceHits(coordHits, board);
-                    List<Cartesian> coordsNeighours = actions.GetNeighbourCoords(pieceHits.coord);
-                    board = actions.ChangeNeighourStates(coordsNeighours, board);
-                    actionsRemaining--;
-                    UpdateActionRemainingText();
-                    if (solutionRemaining.Contains(coordHits))
-                    {
-                        Debug.Log("in solution");
-                        solutionRemaining.Remove(coordHits);
-                    }
-                    hitsDone.Add(coordHits);
-                    if (rules.checkForEndGame(board))
-                    {
-                        Debug.Log("END!!!");
-                        PauseMenu.finished = true;
-                    }
-                    else if (actionsRemaining == 0)
-                    {
-                        PauseMenu.failed = true;
-                    }
+                    BoardHit(coordHits);
                 }
             }
 
             if (coordHits != null && !coordHits.Equals(lastCoordAbove))
             {
-                aboveVoid = false;
-                //Debug.Log(coordHits.String());
-                lastCoordAbove = coordHits;
-                Piece.Piece pieceAbove = actions.GetPieceHits(coordHits, board);
-                List<Cartesian> coordsNeighours = actions.GetNeighbourCoords(pieceAbove.coord);
-                actions.ChangeNeighourHighlight(coordsNeighours, board);
-                actions.ChangeNeighourHighlight(coordsNeighours, goal);
+                AboveBoard(coordHits);
             }
 
             if (coordHits == null && !aboveVoid)
             {
-                aboveVoid = true;
-                Cartesian nullCoord = new Cartesian(0, 0);
-                actions.ChangeNeighourHighlight(new List<Cartesian>() { nullCoord }, board);
-                actions.ChangeNeighourHighlight(new List<Cartesian>() { nullCoord }, goal);
-                lastCoordAbove = nullCoord;
+                AboveVoid();
             }
 
+        }
+
+        private void BoardHit(Cartesian coordHits)
+        {
+            aboveVoid = false;
+            lastCoordHits = coordHits;
+            lastCoordAbove = new Cartesian(0, 0);
+            //Debug.Log(coordHits.String());
+            Piece.Piece pieceHits = actions.GetPieceHits(coordHits, board);
+            List<Cartesian> coordsNeighours = actions.GetNeighbourCoords(pieceHits.coord);
+            board = actions.ChangeNeighourStates(coordsNeighours, board);
+            actionsRemaining--;
+            UpdateActionRemainingText();
+            if (solutionRemaining.Contains(coordHits))
+            {
+                Debug.Log("in solution");
+                solutionRemaining.Remove(coordHits);
+            }
+            hitsDone.Add(coordHits);
+            if (rules.checkForEndGame(board))
+            {
+                Debug.Log("END!!!");
+                PauseMenu.finished = true;
+            }
+            else if (actionsRemaining == 0)
+            {
+                PauseMenu.failed = true;
+            }
+        }
+
+        private void AboveBoard(Cartesian coordHits)
+        {
+            aboveVoid = false;
+            //Debug.Log(coordHits.String());
+            lastCoordAbove = coordHits;
+            Piece.Piece pieceAbove = actions.GetPieceHits(coordHits, board);
+            List<Cartesian> coordsNeighours = actions.GetNeighbourCoords(pieceAbove.coord);
+            actions.ChangeNeighourHighlight(coordsNeighours, board);
+            actions.ChangeNeighourHighlight(coordsNeighours, goal);
+        }
+
+        private void AboveVoid()
+        {
+            aboveVoid = true;
+            Cartesian nullCoord = new Cartesian(0, 0);
+            actions.ChangeNeighourHighlight(new List<Cartesian>() { nullCoord }, board);
+            actions.ChangeNeighourHighlight(new List<Cartesian>() { nullCoord }, goal);
+            lastCoordAbove = nullCoord;
         }
 
         private Cartesian GetCoordHits()
