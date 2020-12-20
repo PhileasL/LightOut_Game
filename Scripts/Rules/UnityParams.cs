@@ -29,7 +29,7 @@ namespace Scripts.Rules
 
         public static int offState = 0;
 
-        public static float clueApparitionTemporisation = 60.0f;
+        public static float clueApparitionTemporisation = 30.0f;
 
         public static Dictionary<int, string> stateToMaterial = new Dictionary<int, string>(){{onState, onMaterialPath},
                                                                                               {offState, offMaterialPath}};

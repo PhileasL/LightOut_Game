@@ -2,13 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\Scripts",
-    "\\Scripts\\Actions",
-    "\\Scripts\\Board",
-    "\\Scripts\\Board\\Plane",
-    "\\Scripts\\Coord",
-    "\\Scripts\\Piece",
-    "\\Scripts\\Rules"
+    "\\Scripts\\Game"
   ],
-  "SelectedNode": "\\Scripts\\PauseMenu.cs",
+  "SelectedNode": "\\Scripts\\Game\\PauseMenu.cs",
   "PreviewInSolutionExplorer": false
 }
