@@ -35,11 +35,20 @@ namespace Scripts.Coord
             else { return -1; }
         }
 
+        /// <summary>
+        /// String is the function that return a definition of the Cartesian object 
+        /// </summary>
+        /// <returns> "x: value y: value" </returns>
         public string String()
         {
             return "x: " + x.ToString() + " y: " + y.ToString();
         }
 
+        /// <summary>
+        /// Equals that override the function is used if we are considering the .Contains method of a List object
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns> bool </returns>
         public override bool Equals(object obj)
         {
             if (obj == null) return false;
@@ -48,16 +57,31 @@ namespace Scripts.Coord
             else return Equals(objAsPart);
         }
 
+        /// <summary>
+        /// Equals is a function that compare x and y of two Cartesian object
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns> bool </returns>
         public bool Equals(Cartesian other)
         {
             return (other.x == x && other.y == y);
         }
 
+        /// <summary>
+        /// GetHashCode that override the function is used if we are considering the .Contains method of a List object
+        /// </summary>
+        /// <returns> int hash code </returns>
         public override int GetHashCode()
         {
             return (int)(x + 20*y);
         }
 
+        /// <summary>
+        /// DistanceBetween2Coords static function returns the cartesian distance between two points
+        /// </summary>
+        /// <param name="coord1"></param>
+        /// <param name="coord2"></param>
+        /// <returns> int distance between 2 Cartesian objects </returns>
         public static float DistanceBetween2Coords(Cartesian coord1, Cartesian coord2)
         {
             return (float)System.Math.Sqrt((coord2.Coord(0) - coord1.Coord(0)) * (coord2.Coord(0) - coord1.Coord(0))

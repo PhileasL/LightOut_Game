@@ -2,8 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\Scripts",
-    "\\Scripts\\Game"
+    "\\Scripts\\Board\\Plane"
   ],
-  "SelectedNode": "\\Scripts\\Game\\PauseMenu.cs",
+  "SelectedNode": "\\Scripts\\ScriptsAssembly.asmdef.meta",
   "PreviewInSolutionExplorer": false
 }
