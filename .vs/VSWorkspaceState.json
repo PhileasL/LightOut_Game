@@ -2,8 +2,16 @@
   "ExpandedNodes": [
     "",
     "\\Scripts",
-    "\\Scripts\\Board\\Plane"
+    "\\Scripts\\Actions",
+    "\\Scripts\\Board",
+    "\\Scripts\\Board\\Plane",
+    "\\Scripts\\Coord",
+    "\\Scripts\\Game",
+    "\\Scripts\\Tests",
+    "\\Scripts\\Tests\\Actions",
+    "\\Scripts\\Tests\\Board",
+    "\\Scripts\\Tests\\Board\\Plane"
   ],
-  "SelectedNode": "\\Scripts\\ScriptsAssembly.asmdef.meta",
+  "SelectedNode": "\\Scripts\\Actions\\Actions.cs",
   "PreviewInSolutionExplorer": false
 }

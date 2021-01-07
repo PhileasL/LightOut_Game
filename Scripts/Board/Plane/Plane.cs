@@ -32,12 +32,6 @@ namespace Scripts.Board.Plane
         /// </summary>
         private float center;
 
-        // Start is called before the first frame update
-        void Start()
-        {
-            
-        }
-
         /// <summary>
         /// ShowPlane show the plane on the scene and assign it a texture
         /// </summary>
@@ -62,12 +56,6 @@ namespace Scripts.Board.Plane
             planeObject.transform.parent = this.transform;
             planeObject.transform.localScale = new Vector3(scale, 1, scale);
             planeObject.transform.position = new Vector3((float)(center), 0, (float)(center));           
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
 
         public void SetPosition(bool isGoal, int size)
