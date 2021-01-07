@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Scripts.Rules
 {
+    /// <summary>
+    /// UnityParams class contains all the static definitions of the game
+    /// </summary>
     public static class UnityParams
     {
         public static int defaultSize = 6;
@@ -10,6 +13,8 @@ namespace Scripts.Rules
         public static int defaultNeighbour = 2;
 
         public static int defaultDifficulty = 1;
+
+        public static float clueApparitionTemporisation = 30.0f;
 
         public static string planeObjectPath = "Prefabs/Plane";
 
@@ -34,8 +39,6 @@ namespace Scripts.Rules
         public static int onState = 1;
 
         public static int offState = 0;
-
-        public static float clueApparitionTemporisation = 30.0f;
 
         public static Dictionary<int, string> stateToMaterial = new Dictionary<int, string>(){{onState, onMaterialPath},
                                                                                               {offState, offMaterialPath}};

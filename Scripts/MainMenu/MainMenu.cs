@@ -31,7 +31,7 @@ namespace Scripts.MainMenu
         /// <summary>
         /// preview is an instance of Rules for the preview
         /// </summary>
-        Rules.Rules preview;
+        private Rules.Rules preview;
 
         /// <summary>
         /// PlayGame function is called when player presses Start on the menu

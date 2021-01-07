@@ -5,18 +5,36 @@ using UnityEngine.SceneManagement;
 
 namespace Scripts.Game
 {
+    /// <summary>
+    /// PauseMenu class is the supervisor of the pause menu screen
+    /// </summary>
     public class PauseMenu : MonoBehaviour
     {
+        /// <summary>
+        /// All thoses GameObject are binded to their corresponding object in the editor hierarchy
+        /// </summary>
         public GameObject lightOutGame, pauseMenu, congratText, failText,
             pauseText, retryButton, resumeButton;
 
+        /// <summary>
+        /// isPaused bool is an image of the pause of the game
+        /// </summary>
         public static bool isPaused = false;
 
+        /// <summary>
+        /// finished bool is an image of the completion of the game
+        /// </summary>
         public static bool finished = false;
 
+        /// <summary>
+        /// failed bool is an image of the fail of the game
+        /// </summary>
         public static bool failed = false;
 
-        // Update is called once per frame
+        /// <summary>
+        /// Update is called once per frame
+        /// supervisor of the end, fail, pause screen
+        /// </summary>
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape) && !finished)
@@ -40,6 +58,9 @@ namespace Scripts.Game
             }
         }
 
+        /// <summary>
+        /// Resume is called when he resume button is pressed in the pause menu
+        /// </summary>
         public void Resume()
         {
             pauseMenu.SetActive(false);
@@ -48,6 +69,9 @@ namespace Scripts.Game
             isPaused = false;
         }
 
+        /// <summary>
+        /// Pause is called when the pause button is pressed in the game scene
+        /// </summary>
         public void Pause()
         {
             congratText.SetActive(false);
@@ -63,17 +87,25 @@ namespace Scripts.Game
             isPaused = true;
         }
 
+        /// <summary>
+        /// QuitGame is called when the quit button is pressed in the pause menu
+        /// </summary>
         public void QuitGame()
         {
-            Debug.Log("quit pressed");
             Application.Quit();
         }
 
+        /// <summary>
+        /// GoToMenu is called when the menu button is pressed in the pause menu
+        /// </summary>
         public void GoToMenu()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
 
+        /// <summary>
+        /// Finished function shows the completion screen
+        /// </summary>
         public void Finished()
         {
             congratText.SetActive(true);
@@ -87,6 +119,9 @@ namespace Scripts.Game
             lightOutGame.SetActive(false);
         }
 
+        /// <summary>
+        /// Failed function shows the failed screen
+        /// </summary>
         public void Failed()
         {
             congratText.SetActive(false);

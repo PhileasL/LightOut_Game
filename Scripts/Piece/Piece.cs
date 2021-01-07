@@ -7,6 +7,9 @@ using Scripts.Rules;
 
 namespace Scripts.Piece
 {
+    /// <summary>
+    /// Piece class is a supervisor for a Piece GameObject
+    /// </summary>
     public class Piece : MonoBehaviour
     {
 
@@ -25,23 +28,20 @@ namespace Scripts.Piece
         /// </summary>
         public int state;
 
-        void Start()
-        {
-            //this.state = Rules.UnityParams.offState;
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            
-        }
-
+        /// <summary>
+        /// ApplyHighlight function change the highlight of the Piece or not depending on the given argument
+        /// </summary>
+        /// <param name="highlight">bool</param>
         public void ApplyHighlight(bool highlight)
         {
             if (highlight) ApplyNewMaterial(Rules.UnityParams.stateToHighlightMaterial[state]);
             else ApplyNewMaterial(Rules.UnityParams.stateToMaterial[state]);
         }
 
+        /// <summary>
+        /// ApplyNewMaterial function takes the material path in argument an apply it to the Piece
+        /// </summary>
+        /// <param name="materialPath"></param>
         public void ApplyNewMaterial(string materialPath)
         {
             Material mat = (Material)Resources.Load(materialPath);
@@ -49,6 +49,9 @@ namespace Scripts.Piece
             rend.material = mat;
         }
 
+        /// <summary>
+        /// ChangeState function changes the state of the Piece
+        /// </summary>
         public void ChangeState()
         {
             if (state == 1) { state = 0; }
@@ -72,6 +75,11 @@ namespace Scripts.Piece
             if (isGoal) { pieceObject.transform.position += new Vector3(0, 0, size + Rules.UnityParams.spaceBetweenBoards); }
         }
 
+        /// <summary>
+        /// Equals function compare two Piece state and coordinates
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns>bool</returns>
         public bool Equals(Piece other)
         {
             return (other.state == state && other.coord.Equals(coord));

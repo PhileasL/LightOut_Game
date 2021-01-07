@@ -9,7 +9,9 @@ namespace Scripts.Tests.Coord
 {
     public class TestCartesian
     {
-        // TestCartesianCoordMethod tests the Coord method of Cartesian class
+        /// <summary>
+        /// TestCartesianCoordMethod tests the Coord method of Cartesian class
+        /// </summary>
         [Test]
         public void TestCartesianCoordMethod()
         {
@@ -21,7 +23,9 @@ namespace Scripts.Tests.Coord
             Assert.AreEqual(toTest.Coord(1), y, "y expected to be equals to toTest.Coord(1), y = " + y.ToString() + " toTest.Coord(0) = " + toTest.Coord(1).ToString());
         }
 
-        // TestCartesianStringMethod tests the String method of Cartesian class
+        /// <summary>
+        /// TestCartesianStringMethod tests the String method of Cartesian class
+        /// </summary>
         [Test]
         public void TestCartesianStringMethod()
         {
@@ -32,7 +36,9 @@ namespace Scripts.Tests.Coord
             Assert.AreEqual(toTest.String(), "x: 1 y: 2", "expected output: \"x: 1 y: 2\" but got \"" + toTest.String() + "\"");
         }
 
-        // TestCartesianEqualsMethod tests the Equals method of Cartesian class
+        /// <summary>
+        /// TestCartesianEqualsMethod tests the Equals method of Cartesian class
+        /// </summary>
         [Test]
         public void TestCartesianEqualsMethod()
         {
@@ -47,7 +53,9 @@ namespace Scripts.Tests.Coord
             Assert.IsFalse(toTest.Equals(toTest2), "expected toTest not to be equals to toTest2 but it's not");
         }
 
-        // TestCartesianGetHashCodeMethod tests the HashCodeASsignation method of Cartesian class to be different on each Cartesian object of a 10x10 board
+        /// <summary>
+        /// TestCartesianGetHashCodeMethod tests the HashCodeASsignation method of Cartesian class to be different on each Cartesian object of a 10x10 board
+        /// </summary>
         [Test]
         public void TestCartesianGetHashCodeMethod()
         {
@@ -74,7 +82,9 @@ namespace Scripts.Tests.Coord
             }
         }
 
-        // TestCartesianDistanceBetween2CoordsMethod tests the DistanceBetween2Coords method of Cartesian class
+        /// <summary>
+        /// TestCartesianDistanceBetween2CoordsMethod tests the DistanceBetween2Coords method of Cartesian class
+        /// </summary>
         [Test]
         public void TestCartesianDistanceBetween2CoordsMethod()
         {
