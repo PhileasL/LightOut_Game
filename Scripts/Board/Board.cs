@@ -9,6 +9,9 @@ using System;
 
 namespace Scripts.Board
 {
+    /// <summary>
+    /// Board class is the parent for Plane and Piece classes
+    /// </summary>
     public class Board
     {
         /// <summary>
@@ -26,6 +29,9 @@ namespace Scripts.Board
         /// </summary>
         public List<Piece.Piece> pieces = new List<Piece.Piece>();
 
+        /// <summary>
+        /// isGoal represent if the board is a goalBoard or not
+        /// </summary>
         private bool isGoal;
 
         /// <summary>

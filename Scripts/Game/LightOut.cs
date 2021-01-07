@@ -30,7 +30,7 @@ namespace Scripts.Game
         private List<Cartesian> solutionRemaining, hitsDone;
 
         // Start is called before the first frame update
-        void Start()
+        public void Start()
         {
             PauseMenu.finished = false;
             rules = new Rules.Rules();

@@ -5,6 +5,12 @@ namespace Scripts.Rules
 {
     public static class UnityParams
     {
+        public static int defaultSize = 6;
+
+        public static int defaultNeighbour = 2;
+
+        public static int defaultDifficulty = 1;
+
         public static string planeObjectPath = "Prefabs/Plane";
 
         public static string pieceObjectPath = "Prefabs/Piece";

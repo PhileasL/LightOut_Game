@@ -4,9 +4,11 @@ using UnityEngine;
 
 namespace Scripts.Coord
 {
+    /// <summary>
+    /// Cartesian class is the representation of a Cartesian space
+    /// </summary>
     public class Cartesian
     {
-
         /// <summary>
         /// Coordinates of a Cartesian instance
         /// </summary>
@@ -15,8 +17,8 @@ namespace Scripts.Coord
         /// <summary>
         /// Cartesian is a constructor of a cartesian system coordinate
         /// </summary>
-        /// <param name="xPos"></param>
-        /// <param name="yPos"></param>
+        /// <param name="xPos"> float x </param>
+        /// <param name="yPos"> float y </param>
         public Cartesian(float x, float y)
         {
             this.x = x;
@@ -26,7 +28,7 @@ namespace Scripts.Coord
         /// <summary>
         /// Coord is a function that returns x or y depending on the given argument
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="c"> int 0->x ; 1->y </param>
         /// <returns>x or y coordinate, -1 if c isn't valid</returns>
         public float Coord(int c)
         {
@@ -47,7 +49,7 @@ namespace Scripts.Coord
         /// <summary>
         /// Equals that override the function is used if we are considering the .Contains method of a List object
         /// </summary>
-        /// <param name="obj"></param>
+        /// <param name="obj"> object </param>
         /// <returns> bool </returns>
         public override bool Equals(object obj)
         {
@@ -60,8 +62,8 @@ namespace Scripts.Coord
         /// <summary>
         /// Equals is a function that compare x and y of two Cartesian object
         /// </summary>
-        /// <param name="other"></param>
-        /// <returns> bool </returns>
+        /// <param name="other"> Cartesian </param>
+        /// <returns> bool isEqual </returns>
         public bool Equals(Cartesian other)
         {
             return (other.x == x && other.y == y);
@@ -79,8 +81,8 @@ namespace Scripts.Coord
         /// <summary>
         /// DistanceBetween2Coords static function returns the cartesian distance between two points
         /// </summary>
-        /// <param name="coord1"></param>
-        /// <param name="coord2"></param>
+        /// <param name="coord1"> Cartesian </param>
+        /// <param name="coord2"> Cartesian </param>
         /// <returns> int distance between 2 Cartesian objects </returns>
         public static float DistanceBetween2Coords(Cartesian coord1, Cartesian coord2)
         {

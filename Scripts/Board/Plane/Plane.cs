@@ -6,10 +6,11 @@ using Scripts.Coord;
 
 namespace Scripts.Board.Plane
 {
+    /// <summary>
+    /// Plane class is the class of a Plane gameObject
+    /// </summary>
     public class Plane : MonoBehaviour
     {
-        //manage the gameObject and texture
-
         /// <summary>
         /// planePrefab is the plane GameObject
         /// </summary>
@@ -20,7 +21,6 @@ namespace Scripts.Board.Plane
         /// represents the coordinates of this relative to the world
         /// </summary>
         public Cartesian coords;
-
 
         /// <summary>
         /// size of the plane, 0.1 is one piece
@@ -48,6 +48,7 @@ namespace Scripts.Board.Plane
         /// <summary>
         /// SetParameters sets scale of plane and it's position relative to this
         /// </summary>
+        /// <param name="size">int size of plane</param>
         private void SetParameters(int size)
         {
             scale = (float)size / 10;
@@ -58,6 +59,11 @@ namespace Scripts.Board.Plane
             planeObject.transform.position = new Vector3((float)(center), 0, (float)(center));           
         }
 
+        /// <summary>
+        /// SetPosition shows plane and sets its differents parameters (size, scale, position)
+        /// </summary>
+        /// <param name="isGoal">bool goalPlane or not</param>
+        /// <param name="size">int size of plane</param>
         public void SetPosition(bool isGoal, int size)
         {
             ShowPlane();

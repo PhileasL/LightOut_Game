@@ -2,16 +2,16 @@
   "ExpandedNodes": [
     "",
     "\\Scripts",
-    "\\Scripts\\Actions",
     "\\Scripts\\Board",
     "\\Scripts\\Board\\Plane",
     "\\Scripts\\Coord",
     "\\Scripts\\Game",
-    "\\Scripts\\Tests",
+    "\\Scripts\\MainMenu",
+    "\\Scripts\\Rules",
     "\\Scripts\\Tests\\Actions",
     "\\Scripts\\Tests\\Board",
     "\\Scripts\\Tests\\Board\\Plane"
   ],
-  "SelectedNode": "\\Scripts\\Actions\\Actions.cs",
+  "SelectedNode": "\\Scripts\\Rules\\UnityParams.cs",
   "PreviewInSolutionExplorer": false
 }
