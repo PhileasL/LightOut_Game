@@ -89,9 +89,9 @@ namespace Scripts.Game
             UpdateActionRemainingText();
             SetCamera();
             StartCoroutine(ShowClue());
+            PauseMenu.failed = false;
             if (retry)
             {
-                PauseMenu.failed = false;
                 foreach (Cartesian hit in hitsDone)
                 {
                     List<Cartesian> coordsNeighours = actions.GetNeighbourCoords(hit);

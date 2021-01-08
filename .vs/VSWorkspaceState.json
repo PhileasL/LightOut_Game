@@ -1,12 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\Scripts",
-    "\\Scripts\\Actions",
-    "\\Scripts\\MainMenu",
-    "\\Scripts\\Piece",
-    "\\Scripts\\Rules"
+    ""
   ],
-  "SelectedNode": "\\Scripts\\Rules\\UnityParams.cs",
+  "SelectedNode": "\\.editorconfig",
   "PreviewInSolutionExplorer": false
 }
